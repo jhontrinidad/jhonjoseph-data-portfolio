@@ -1,39 +1,2109 @@
-<!-- Add this structure to your index.html -->
-<div class="container">
-    <section class="glass-card">
-        <h2>Professional Experience</h2>
-        
-        <div style="margin-bottom: 20px;">
-            <h3>Data Analyst - Marketing | Casino Plus</h3>
-            <p><em>Jan 2026 - Jun 2026</em></p>
-            <ul>
-                <li>Built Power BI dashboards to monitor member account health and surface anomalies for Department Heads.</li>
-                <li>Delivered Member Behavior Analysis and pacing reports to guide targeted marketing campaigns.</li>
-                <li>Authored ROI evaluations for promotions and events to drive strategic decision-making.</li>
-            </ul>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jhon Joseph Trinidad — Business Intelligence & Data Analytics</title>
+<meta name="description" content="Business Intelligence Consultant & Marketing Analytics Specialist. Transforming data into strategic decisions through Power BI, SQL, and executive reporting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --black: #0A0A0A;
+  --deep: #0F0F14;
+  --card: #131318;
+  --card2: #1A1A24;
+  --gold: #C9A84C;
+  --gold-light: #E8C96C;
+  --gold-dim: rgba(201,168,76,0.15);
+  --silver: #A8A8B8;
+  --white: #F0F0F5;
+  --blue: #4A7FD4;
+  --blue-glow: rgba(74,127,212,0.12);
+  --border: rgba(201,168,76,0.12);
+  --border-silver: rgba(168,168,184,0.08);
+  --radius: 2px;
+  --radius-lg: 4px;
+}
 
-        <div style="margin-bottom: 20px;">
-            <h3>Global Access & Identity Management Specialist | VXI Global Solutions</h3>
-            <p><em>Jan 2023 - Dec 2025</em></p>
-            <ul>
-                <li>Managed system access permissions and user authentication for enterprise clients using ServiceNow, Saviynt, and OKTA.</li>
-                <li>Conducted periodic access audits to ensure compliance and maintained employee database records[cite: 3].</li>
-            </ul>
-        </div>
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <div style="margin-bottom: 20px;">
-            <h3>Releasing Staff | Nestlé North Distribution Center</h3>
-            <p><em>Jul 2013 - May 2018</em></p>
-            <ul>
-                <li>Reconciled stock movement data and ensured accurate goods issuance in enterprise systems[cite: 3].</li>
-            </ul>
-        </div>
-    </section>
+html { scroll-behavior: smooth; font-size: 16px; }
 
-    <section class="glass-card">
-        <h2>Education & Certification</h2>
-        <p><strong>B.S. in Information Technology</strong> | Pampanga State Agricultural University (2018-2022)[cite: 3]</p>
-        <p><strong>Certifications:</strong> Microsoft Azure Identity & Access Management (2025), Getting Started with Power BI (2025), and SQL Beginner to Expert (2020)[cite: 3].</p>
-    </section>
+body {
+  background: var(--black);
+  color: var(--silver);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Selection */
+::selection { background: var(--gold-dim); color: var(--gold-light); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.display {
+  font-family: 'Cormorant Garant', serif;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.display-lg { font-size: clamp(3rem, 7vw, 6.5rem); }
+.display-md { font-size: clamp(2.2rem, 5vw, 4rem); }
+.display-sm { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.body-lg { font-size: 1.05rem; font-weight: 300; line-height: 1.8; }
+.body-sm { font-size: 0.85rem; font-weight: 300; }
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+section { position: relative; overflow: hidden; }
+
+/* ============================================
+   ANIMATED BACKGROUND GRAIN
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: all 0.4s ease;
+}
+
+nav.scrolled {
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.nav-logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--silver);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  padding: 0.5rem 1.4rem;
+  border: 1px solid var(--gold);
+  color: var(--gold) !important;
+  border-radius: var(--radius);
+  font-size: 0.7rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-cta:hover {
+  background: var(--gold) !important;
+  color: var(--black) !important;
+}
+
+.nav-cta::after { display: none !important; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--silver);
+  transition: all 0.3s;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 8rem 0 4rem;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(74,127,212,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+/* Hero Left */
+.hero-left { position: relative; z-index: 2; }
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-headline {
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  line-height: 1.85;
+  max-width: 480px;
+  margin-bottom: 3rem;
+  color: rgba(168,168,184,0.85);
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.badge {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  background: var(--gold-dim);
+  animation: badge-float 3s ease-in-out infinite;
+}
+
+.badge:nth-child(2) { animation-delay: 0.3s; }
+.badge:nth-child(3) { animation-delay: 0.6s; }
+.badge:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-primary {
+  padding: 0.85rem 2rem;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.3); }
+.btn-primary:hover::before { opacity: 1; }
+
+.btn-outline {
+  padding: 0.85rem 2rem;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  padding: 0.85rem 1.5rem;
+  background: transparent;
+  color: var(--silver);
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-ghost:hover { color: var(--gold); }
+
+/* Hero Right — Constellation Portrait */
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 520px;
+}
+
+.constellation-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rotating orbit text */
+.orbit-ring {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  animation: spin 25s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Portrait */
+.portrait-frame {
+  position: relative;
+  z-index: 3;
+  width: 240px;
+  height: 240px;
+}
+
+.portrait-placeholder {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--card2) 0%, var(--card) 100%);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(201,168,76,0.08), 0 0 120px rgba(74,127,212,0.06);
+}
+
+.portrait-placeholder svg {
+  opacity: 0.35;
+}
+
+.portrait-initials {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.portrait-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--silver);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+/* Glow dots around portrait */
+.glow-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+  z-index: 4;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 0;
+}
+
+/* ============================================
+   ABOUT
+   ============================================ */
+.about {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%);
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.about-left { position: sticky; top: 8rem; }
+
+.about-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+
+.about-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.role-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  transition: all 0.3s ease;
+}
+
+.role-item:hover {
+  border-color: var(--border);
+  background: var(--card2);
+  transform: translateX(4px);
+}
+
+.role-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--gold-dim);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.role-label { font-size: 0.82rem; font-weight: 500; color: var(--white); }
+.role-sub { font-size: 0.7rem; color: var(--silver); margin-top: 1px; }
+
+.about-right {}
+
+.about-tagline {
+  font-family: 'Cormorant Garant', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.about-tagline strong {
+  font-weight: 600;
+  font-style: italic;
+  color: var(--gold);
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  color: rgba(168,168,184,0.9);
+  margin-bottom: 2.5rem;
+}
+
+.highlight-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-silver);
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.highlight-cell {
+  background: var(--card);
+  padding: 1.4rem 1.2rem;
+  text-align: center;
+}
+
+.highlight-num {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+
+.highlight-lbl {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-top: 0.3rem;
+}
+
+/* ============================================
+   EXPERTISE / SERVICES
+   ============================================ */
+.expertise {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: var(--deep);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header .display-md {
+  color: var(--white);
+  margin: 1rem 0 1rem;
+}
+
+.section-header p {
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  color: var(--silver);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-silver);
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.service-card {
+  background: var(--card);
+  padding: 2.2rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-dim) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.service-card:hover {
+  background: var(--card2);
+  transform: translateY(-2px);
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.4rem;
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card:hover .service-icon {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.service-title {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.service-desc {
+  font-size: 0.8rem;
+  color: var(--silver);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   TOOLS
+   ============================================ */
+.tools {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--black);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-silver);
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tool-cell {
+  background: var(--card);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.tool-cell:hover {
+  background: var(--card2);
+}
+
+.tool-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid var(--border-silver);
+}
+
+.tool-name {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--silver);
+  text-align: center;
+}
+
+.tool-cell:hover .tool-name { color: var(--gold); }
+
+/* ============================================
+   PROJECTS
+   ============================================ */
+.projects {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: var(--deep);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.project-card:hover {
+  border-color: var(--border);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,168,76,0.05);
+}
+
+.project-preview {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-content {
+  padding: 2rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  padding: 0.2rem 0.6rem;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.62rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-title {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+.project-challenge {
+  font-size: 0.78rem;
+  color: var(--silver);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+.project-insights {
+  border-top: 1px solid var(--border-silver);
+  padding-top: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.insights-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.insights-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.insights-list li {
+  font-size: 0.78rem;
+  color: var(--silver);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.insights-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+.project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+  border-top: 1px solid var(--border-silver);
+}
+
+.tech-pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.tech-pill {
+  padding: 0.2rem 0.55rem;
+  background: rgba(74,127,212,0.08);
+  border: 1px solid rgba(74,127,212,0.15);
+  border-radius: var(--radius);
+  font-size: 0.62rem;
+  color: #7AABF0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.project-cta {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s;
+  white-space: nowrap;
+}
+
+.project-cta:hover { gap: 0.7rem; }
+
+/* ============================================
+   IMPACT / STATS
+   ============================================ */
+.impact {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: var(--black);
+  text-align: center;
+}
+
+.impact-headline {
+  color: var(--white);
+  margin: 1rem 0 1rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.impact-sub {
+  max-width: 480px;
+  margin: 0 auto 4rem;
+  color: var(--silver);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-silver);
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stat-cell {
+  background: var(--card);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.stat-cell:hover { background: var(--card2); }
+
+.stat-number {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+.testimonials {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: var(--deep);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.testimonial-card {
+  background: var(--card);
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.testimonial-card:hover {
+  border-color: var(--border);
+  transform: translateY(-3px);
+}
+
+.quote-mark {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 4rem;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 0.6;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.testimonial-text {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid var(--border-silver);
+  padding-top: 1.2rem;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.author-name { font-size: 0.82rem; font-weight: 500; color: var(--white); }
+.author-role { font-size: 0.7rem; color: var(--silver); margin-top: 1px; }
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact {
+  padding: clamp(6rem, 12vw, 11rem) 0;
+  background: var(--black);
+  position: relative;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-inner {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-headline {
+  color: var(--white);
+  margin: 1rem 0 1.5rem;
+}
+
+.contact-sub {
+  max-width: 520px;
+  margin: 0 auto 3.5rem;
+  font-size: 1rem;
+  color: var(--silver);
+  line-height: 1.8;
+}
+
+.contact-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--border-silver);
+  border-radius: var(--radius);
+  color: var(--silver);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.social-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-silver);
+  background: var(--black);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy {
+  font-size: 0.72rem;
+  color: rgba(168,168,184,0.4);
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 0.9rem;
+  color: rgba(201,168,76,0.4);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ============================================
+   PROJECT PREVIEW VISUALS
+   ============================================ */
+.preview-feast {
+  background: linear-gradient(135deg, #1A1A2E 0%, #0F0F1A 100%);
+}
+
+.preview-promo {
+  background: linear-gradient(135deg, #1A2E1A 0%, #0F1A0F 100%);
+}
+
+.preview-player {
+  background: linear-gradient(135deg, #2E1A2E 0%, #1A0F1A 100%);
+}
+
+.preview-marketing {
+  background: linear-gradient(135deg, #2E2A1A 0%, #1A170F 100%);
+}
+
+.preview-chart {
+  width: 90%;
+  height: 80%;
+  position: relative;
+}
+
+/* Mini chart SVG */
+.mini-label {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--silver);
+  opacity: 0.5;
+}
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.mobile-menu a:hover { color: var(--gold); }
+
+.mobile-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--silver);
+  font-size: 1.5rem;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+}
+
+.mobile-close:hover { color: var(--gold); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .hero-left { order: 2; }
+  .hero-right { order: 1; height: 340px; }
+
+  .hero-eyebrow { justify-content: center; }
+  .hero-sub { margin: 0 auto 2.5rem; }
+  .hero-badges { justify-content: center; }
+  .hero-ctas { justify-content: center; }
+
+  .orbit-ring { width: 300px; height: 300px; }
+  .portrait-placeholder { width: 180px; height: 180px; }
+  .portrait-initials { font-size: 2.8rem; }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-left { position: static; }
+  .highlight-bar { grid-template-columns: repeat(3, 1fr); }
+
+  .services-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .projects-grid { grid-template-columns: 1fr; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .highlight-bar { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .social-row { flex-direction: column; align-items: center; }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring, .badge { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">JJ<span>.</span>Trinidad</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Services</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" role="button" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#expertise" class="mobile-link">Services</a>
+  <a href="#projects" class="mobile-link">Work</a>
+  <a href="#impact" class="mobile-link">Impact</a>
+  <a href="#contact" class="mobile-link">Contact</a>
 </div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero" id="hero">
+  <div class="container hero-inner">
+
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="eyebrow">Business Intelligence Consultant</span>
+      </div>
+
+      <h1 class="display display-lg hero-headline">
+        Transforming<br>
+        Data Into<br>
+        <em>Business Growth</em>
+      </h1>
+
+      <p class="hero-sub">
+        I help organizations uncover insights, optimize performance, and drive strategic decisions through analytics, business intelligence, and data-driven storytelling.
+      </p>
+
+      <div class="hero-badges">
+        <span class="badge">⚡ Power BI Developer</span>
+        <span class="badge">🔍 SQL Analyst</span>
+        <span class="badge">📊 Marketing Analytics</span>
+        <span class="badge">🎯 Business Intelligence</span>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View My Work →</a>
+        <a href="mailto:jh0ntrinidad24@gmail.com" class="btn-outline">Contact Me</a>
+        <a href="#" class="btn-ghost" onclick="alert('Resume download coming soon.')">↓ Resume</a>
+      </div>
+    </div>
+
+    <!-- Right: Constellation Portrait -->
+    <div class="hero-right">
+      <div class="constellation-wrap">
+
+        <!-- Rotating SVG orbit text -->
+        <svg class="orbit-ring" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="orbitPath" d="M210,210 m-185,0 a185,185 0 1,1 370,0 a185,185 0 1,1 -370,0"/>
+          </defs>
+          <text fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1">
+            <textPath href="#orbitPath" startOffset="0">
+              <tspan font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(201,168,76,0.35)" letter-spacing="4">
+                BUSINESS INTELLIGENCE • MARKETING ANALYTICS • DATA ANALYTICS • POWER BI • SQL •
+              </tspan>
+            </textPath>
+          </text>
+          <!-- Orbit circle -->
+          <circle cx="210" cy="210" r="185" fill="none" stroke="rgba(201,168,76,0.06)" stroke-width="1" stroke-dasharray="4 8"/>
+          <!-- Constellation dots -->
+          <circle cx="210" cy="25" r="2.5" fill="rgba(201,168,76,0.5)"/>
+          <circle cx="370" cy="130" r="2" fill="rgba(201,168,76,0.4)"/>
+          <circle cx="370" cy="290" r="3" fill="rgba(201,168,76,0.3)"/>
+          <circle cx="210" cy="395" r="2" fill="rgba(201,168,76,0.45)"/>
+          <circle cx="50" cy="290" r="2.5" fill="rgba(201,168,76,0.35)"/>
+          <circle cx="50" cy="130" r="2" fill="rgba(201,168,76,0.4)"/>
+          <!-- Connector lines -->
+          <line x1="210" y1="25" x2="370" y2="130" stroke="rgba(74,127,212,0.08)" stroke-width="1"/>
+          <line x1="370" y1="130" x2="370" y2="290" stroke="rgba(74,127,212,0.08)" stroke-width="1"/>
+          <line x1="370" y1="290" x2="210" y2="395" stroke="rgba(74,127,212,0.08)" stroke-width="1"/>
+          <line x1="210" y1="395" x2="50" y2="290" stroke="rgba(74,127,212,0.08)" stroke-width="1"/>
+          <line x1="50" y1="290" x2="50" y2="130" stroke="rgba(74,127,212,0.08)" stroke-width="1"/>
+          <line x1="50" y1="130" x2="210" y2="25" stroke="rgba(74,127,212,0.08)" stroke-width="1"/>
+        </svg>
+
+        <!-- Inner ring -->
+        <svg style="position:absolute;width:300px;height:300px;animation:spin 18s linear infinite reverse;" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(74,127,212,0.06)" stroke-width="1" stroke-dasharray="2 12"/>
+          <circle cx="150" cy="20" r="4" fill="rgba(74,127,212,0.5)"/>
+          <circle cx="260" cy="215" r="3" fill="rgba(74,127,212,0.4)"/>
+          <circle cx="40" cy="215" r="4" fill="rgba(74,127,212,0.35)"/>
+        </svg>
+
+        <!-- Portrait -->
+        <div class="portrait-frame">
+          <div class="portrait-placeholder">
+            <span class="portrait-initials">JJT</span>
+            <span class="portrait-label">Data Analyst</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================
+     ABOUT
+     ============================================ -->
+<section class="about" id="about">
+  <div class="container about-inner">
+
+    <div class="about-left">
+      <div class="about-pill">
+        <span class="eyebrow">About</span>
+      </div>
+
+      <h2 class="display display-md" style="color:var(--white);">
+        Who I<br><em style="color:var(--gold);font-style:italic;">Am</em>
+      </h2>
+
+      <div class="about-roles">
+        <div class="role-item">
+          <div class="role-icon">📊</div>
+          <div>
+            <div class="role-label">Data Analyst</div>
+            <div class="role-sub">3+ years experience</div>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">📈</div>
+          <div>
+            <div class="role-label">Marketing Analytics Specialist</div>
+            <div class="role-sub">Campaigns · ROI · Pacing</div>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">🧠</div>
+          <div>
+            <div class="role-label">Business Intelligence Professional</div>
+            <div class="role-sub">Power BI · DAX · Dashboards</div>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">🎯</div>
+          <div>
+            <div class="role-label">KPI Reporting Expert</div>
+            <div class="role-sub">Executive-ready insights</div>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">⚡</div>
+          <div>
+            <div class="role-label">Power BI Developer</div>
+            <div class="role-sub">Interactive · Real-time · Scalable</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right reveal">
+      <p class="about-tagline">
+        I don't just build dashboards.<br>
+        I build the <strong>clarity</strong> that drives<br>
+        executive decisions.
+      </p>
+
+      <div class="about-body">
+        <p>With over three years working at the intersection of data and strategy, I specialize in turning complex, noisy datasets into clean, actionable narratives that leadership teams can act on immediately.</p>
+        <p>My work spans marketing analytics, behavioral segmentation, access intelligence, and business operations — always with one goal in mind: helping organizations move faster, smarter, and with more confidence in their data.</p>
+        <p>Whether it's diagnosing why a campaign underperformed, identifying high-value customer segments, or building the single source of truth for a department head's weekly review, I bring both the technical depth and business acumen to make data meaningful.</p>
+      </div>
+
+      <a href="mailto:jh0ntrinidad24@gmail.com" class="btn-primary" style="align-self:flex-start;">Start a Conversation →</a>
+
+      <div class="highlight-bar" style="margin-top:2.5rem;">
+        <div class="highlight-cell">
+          <span class="highlight-num">3+</span>
+          <span class="highlight-lbl">Years Remote</span>
+        </div>
+        <div class="highlight-cell">
+          <span class="highlight-num">20+</span>
+          <span class="highlight-lbl">Dashboards Built</span>
+        </div>
+        <div class="highlight-cell">
+          <span class="highlight-num">100%</span>
+          <span class="highlight-lbl">Insight-Driven</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================
+     EXPERTISE
+     ============================================ -->
+<section class="expertise" id="expertise">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">What I Do</div>
+      <h2 class="display display-md">Core Expertise</h2>
+      <p>Strategic analytics services designed to solve real business problems — not just produce reports.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">🧠</div>
+        <div class="service-title">Business Intelligence</div>
+        <div class="service-desc">End-to-end BI solutions that consolidate siloed data into unified, decision-ready intelligence for leadership and operations teams.</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">📢</div>
+        <div class="service-title">Marketing Analytics</div>
+        <div class="service-desc">Campaign performance analysis, audience segmentation, and attribution modeling that optimizes marketing spend and maximizes ROI.</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">⚡</div>
+        <div class="service-title">Power BI Dashboards</div>
+        <div class="service-desc">Interactive, executive-level dashboards built with DAX and Power Query — designed for clarity, not complexity.</div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">🎯</div>
+        <div class="service-title">KPI Reporting</div>
+        <div class="service-desc">Automated weekly and monthly reporting systems that surface the metrics that matter — on time, every time.</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">🗄️</div>
+        <div class="service-title">SQL Analytics</div>
+        <div class="service-desc">Advanced query engineering that extracts meaningful signals from large relational databases with speed and precision.</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">📊</div>
+        <div class="service-title">Data Visualization</div>
+        <div class="service-desc">Translating complex analytical outputs into compelling visual narratives that stakeholders understand and trust.</div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">💰</div>
+        <div class="service-title">Promotion ROI Analysis</div>
+        <div class="service-desc">Financial evaluation of campaigns and programs — pro forma projections and postmortem assessments that inform future strategy.</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">👥</div>
+        <div class="service-title">Player Segmentation</div>
+        <div class="service-desc">Behavioral clustering and cohort analysis that identifies high-value segments and tailors engagement strategies accordingly.</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">🤖</div>
+        <div class="service-title">Data Automation</div>
+        <div class="service-desc">Eliminating manual reporting workflows through Power Automate and Python scripting — freeing analysts to focus on insight, not operations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================
+     TOOLS
+     ============================================ -->
+<section class="tools" id="tools">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:2.5rem;">
+      <div class="eyebrow">Technology Stack</div>
+      <h2 class="display display-md">Tools of the Trade</h2>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-cell reveal reveal-delay-1">
+        <div class="tool-icon" style="background:rgba(240,180,0,0.08);border-color:rgba(240,180,0,0.15);">
+          <span style="color:#F0B400;font-size:1.4rem;">⬡</span>
+        </div>
+        <span class="tool-name">Power BI</span>
+      </div>
+      <div class="tool-cell reveal reveal-delay-2">
+        <div class="tool-icon" style="background:rgba(204,52,45,0.08);border-color:rgba(204,52,45,0.15);">
+          <span style="color:#CC342D;font-weight:700;font-size:0.9rem;font-family:'JetBrains Mono',monospace;">SQL</span>
+        </div>
+        <span class="tool-name">SQL Server</span>
+      </div>
+      <div class="tool-cell reveal reveal-delay-3">
+        <div class="tool-icon" style="background:rgba(29,129,72,0.08);border-color:rgba(29,129,72,0.15);">
+          <span style="color:#1D8148;font-size:1.2rem;font-weight:700;">X</span>
+        </div>
+        <span class="tool-name">Excel</span>
+      </div>
+      <div class="tool-cell reveal reveal-delay-4">
+        <div class="tool-icon" style="background:rgba(240,180,0,0.08);border-color:rgba(240,180,0,0.15);">
+          <span style="color:#F0B400;font-size:0.75rem;font-weight:700;font-family:'JetBrains Mono',monospace;">DAX</span>
+        </div>
+        <span class="tool-name">DAX</span>
+      </div>
+      <div class="tool-cell reveal reveal-delay-1">
+        <div class="tool-icon" style="background:rgba(74,127,212,0.08);border-color:rgba(74,127,212,0.15);">
+          <span style="color:#4A7FD4;font-size:0.7rem;font-weight:600;font-family:'JetBrains Mono',monospace;">PQ</span>
+        </div>
+        <span class="tool-name">Power Query</span>
+      </div>
+      <div class="tool-cell reveal reveal-delay-2">
+        <div class="tool-icon" style="background:rgba(55,118,171,0.08);border-color:rgba(55,118,171,0.15);">
+          <span style="color:#3776AB;font-size:0.75rem;font-weight:700;font-family:'JetBrains Mono',monospace;">PY</span>
+        </div>
+        <span class="tool-name">Python</span>
+      </div>
+      <div class="tool-cell reveal reveal-delay-3">
+        <div class="tool-icon" style="background:rgba(240,80,50,0.08);border-color:rgba(240,80,50,0.15);">
+          <span style="color:#F05032;font-size:0.75rem;font-weight:700;">⑂</span>
+        </div>
+        <span class="tool-name">GitHub</span>
+      </div>
+      <div class="tool-cell reveal reveal-delay-4">
+        <div class="tool-icon" style="background:rgba(0,89,220,0.08);border-color:rgba(0,89,220,0.15);">
+          <span style="color:#0059DC;font-size:0.7rem;font-weight:700;font-family:'JetBrains Mono',monospace;">PA</span>
+        </div>
+        <span class="tool-name">Power Automate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================
+     PROJECTS
+     ============================================ -->
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Featured Work</div>
+      <h2 class="display display-md">Projects That Moved the Needle</h2>
+      <p>A selection of analytical work that directly informed executive strategy and measurable business outcomes.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Card 1 -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-preview preview-feast">
+          <svg width="90%" height="80%" viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+            <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(201,168,76,0.4)" letter-spacing="2">FEAST &amp; FORTUNE DASHBOARD</text>
+            <!-- KPI row -->
+            <rect x="12" y="32" width="82" height="40" rx="2" fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+            <text x="20" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(201,168,76,0.4)">REVENUE</text>
+            <text x="20" y="62" font-family="Cormorant Garant, serif" font-size="14" fill="rgba(201,168,76,0.7)">₱4.2M</text>
+            <rect x="102" y="32" width="82" height="40" rx="2" fill="rgba(74,127,212,0.04)" stroke="rgba(74,127,212,0.1)" stroke-width="0.5"/>
+            <text x="110" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(74,127,212,0.4)">ATTENDANCE</text>
+            <text x="110" y="62" font-family="Cormorant Garant, serif" font-size="14" fill="rgba(74,127,212,0.7)">2,847</text>
+            <rect x="192" y="32" width="82" height="40" rx="2" fill="rgba(80,220,120,0.04)" stroke="rgba(80,220,120,0.1)" stroke-width="0.5"/>
+            <text x="200" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(80,220,120,0.4)">ROI</text>
+            <text x="200" y="62" font-family="Cormorant Garant, serif" font-size="14" fill="rgba(80,220,120,0.7)">+124%</text>
+            <rect x="282" y="32" width="82" height="40" rx="2" fill="rgba(220,80,80,0.04)" stroke="rgba(220,80,80,0.1)" stroke-width="0.5"/>
+            <text x="290" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(220,80,80,0.4)">ENGAGEMENT</text>
+            <text x="290" y="62" font-family="Cormorant Garant, serif" font-size="14" fill="rgba(220,80,80,0.7)">87%</text>
+            <!-- Bar chart -->
+            <rect x="12" y="82" width="350" height="1" fill="rgba(168,168,184,0.06)"/>
+            <rect x="20" y="112" width="28" height="28" rx="1" fill="rgba(201,168,76,0.2)"/>
+            <rect x="55" y="98" width="28" height="42" rx="1" fill="rgba(201,168,76,0.35)"/>
+            <rect x="90" y="88" width="28" height="52" rx="1" fill="rgba(201,168,76,0.5)"/>
+            <rect x="125" y="104" width="28" height="36" rx="1" fill="rgba(201,168,76,0.3)"/>
+            <rect x="160" y="94" width="28" height="46" rx="1" fill="rgba(201,168,76,0.45)"/>
+            <rect x="195" y="86" width="28" height="54" rx="1" fill="rgba(201,168,76,0.6)"/>
+            <rect x="230" y="100" width="28" height="40" rx="1" fill="rgba(201,168,76,0.35)"/>
+            <rect x="265" y="82" width="28" height="58" rx="1" fill="rgba(201,168,76,0.7)"/>
+            <rect x="300" y="90" width="28" height="50" rx="1" fill="rgba(201,168,76,0.55)"/>
+            <rect x="335" y="84" width="28" height="56" rx="1" fill="rgba(201,168,76,0.65)"/>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="tag">Executive Dashboard</span>
+            <span class="tag">Event Analytics</span>
+          </div>
+          <h3 class="project-title">Feast & Fortune Dashboard</h3>
+          <p class="project-challenge">Leadership needed real-time visibility into campaign performance, attendance trends, and event ROI — consolidated from multiple data sources into a single executive view.</p>
+          <div class="project-insights">
+            <div class="insights-label">Key Outcomes</div>
+            <ul class="insights-list">
+              <li>Surfaced 3 underperforming events, triggering strategy revision</li>
+              <li>Reduced reporting time from 4 hours to 20 minutes weekly</li>
+              <li>Enabled real-time campaign pivoting during live events</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="tech-pills">
+            <span class="tech-pill">Power BI</span>
+            <span class="tech-pill">SQL</span>
+            <span class="tech-pill">DAX</span>
+          </div>
+          <a href="#" class="project-cta">View Case →</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-preview preview-promo">
+          <svg width="90%" height="80%" viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+            <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(80,200,120,0.4)" letter-spacing="2">PROMOTION ROI ANALYSIS</text>
+            <!-- Line chart -->
+            <polyline points="20,130 60,110 100,120 140,85 180,90 220,70 260,75 300,55 340,60" fill="none" stroke="rgba(80,200,120,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="20,130 60,125 100,122 140,118 180,114 220,110 260,108 300,105 340,100" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+            <!-- Pacing labels -->
+            <text x="20" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">JAN</text>
+            <text x="100" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">MAR</text>
+            <text x="180" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">MAY</text>
+            <text x="260" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">JUL</text>
+            <text x="340" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">SEP</text>
+            <!-- Legend -->
+            <rect x="200" y="26" width="8" height="2" fill="rgba(80,200,120,0.5)"/>
+            <text x="212" y="31" font-family="JetBrains Mono" font-size="6" fill="rgba(80,200,120,0.4)">ACTUAL</text>
+            <rect x="200" y="38" width="8" height="1" fill="rgba(201,168,76,0.4)" stroke-dasharray="2,2"/>
+            <text x="212" y="43" font-family="JetBrains Mono" font-size="6" fill="rgba(201,168,76,0.4)">TARGET</text>
+            <!-- KPI pill -->
+            <rect x="20" y="28" width="130" height="28" rx="2" fill="rgba(80,200,120,0.05)" stroke="rgba(80,200,120,0.12)" stroke-width="0.5"/>
+            <text x="28" y="40" font-family="JetBrains Mono" font-size="5.5" fill="rgba(80,200,120,0.4)">CAMPAIGNS ANALYZED</text>
+            <text x="28" y="52" font-family="Cormorant Garant, serif" font-size="14" fill="rgba(80,200,120,0.7)">48 Promotions</text>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="tag">Financial Analytics</span>
+            <span class="tag">Pacing Reports</span>
+          </div>
+          <h3 class="project-title">Promotion ROI & Pacing Analysis</h3>
+          <p class="project-challenge">Marketing needed rigorous financial tracking for promotions — comparing projected vs. actual performance with clear postmortem analysis to improve future planning.</p>
+          <div class="project-insights">
+            <div class="insights-label">Key Outcomes</div>
+            <ul class="insights-list">
+              <li>Identified ₱800K in recoverable budget leakage</li>
+              <li>Built automated pro forma models for 12+ event types</li>
+              <li>Enabled data-driven budget reallocation mid-campaign</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="tech-pills">
+            <span class="tech-pill">SQL</span>
+            <span class="tech-pill">Excel</span>
+            <span class="tech-pill">Power BI</span>
+          </div>
+          <a href="#" class="project-cta">View Case →</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-preview preview-player">
+          <svg width="90%" height="80%" viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+            <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(180,80,220,0.4)" letter-spacing="2">PLAYER SEGMENTATION</text>
+            <!-- Bubble chart simulation -->
+            <circle cx="80" cy="85" r="35" fill="rgba(180,80,220,0.06)" stroke="rgba(180,80,220,0.15)" stroke-width="0.8"/>
+            <text x="80" y="82" font-family="Cormorant Garant, serif" font-size="9" fill="rgba(180,80,220,0.6)" text-anchor="middle">Premium</text>
+            <text x="80" y="94" font-family="JetBrains Mono" font-size="6" fill="rgba(180,80,220,0.4)" text-anchor="middle">14%</text>
+            <circle cx="185" cy="90" r="28" fill="rgba(74,127,212,0.06)" stroke="rgba(74,127,212,0.15)" stroke-width="0.8"/>
+            <text x="185" y="87" font-family="Cormorant Garant, serif" font-size="9" fill="rgba(74,127,212,0.6)" text-anchor="middle">Active</text>
+            <text x="185" y="99" font-family="JetBrains Mono" font-size="6" fill="rgba(74,127,212,0.4)" text-anchor="middle">31%</text>
+            <circle cx="280" cy="95" r="22" fill="rgba(80,200,120,0.06)" stroke="rgba(80,200,120,0.15)" stroke-width="0.8"/>
+            <text x="280" y="92" font-family="Cormorant Garant, serif" font-size="8" fill="rgba(80,200,120,0.6)" text-anchor="middle">Casual</text>
+            <text x="280" y="103" font-family="JetBrains Mono" font-size="5" fill="rgba(80,200,120,0.4)" text-anchor="middle">55%</text>
+            <circle cx="340" cy="110" r="15" fill="rgba(220,80,80,0.06)" stroke="rgba(220,80,80,0.15)" stroke-width="0.8"/>
+            <text x="340" y="107" font-family="Cormorant Garant, serif" font-size="7" fill="rgba(220,80,80,0.5)" text-anchor="middle">Churn</text>
+            <text x="340" y="116" font-family="JetBrains Mono" font-size="5" fill="rgba(220,80,80,0.4)" text-anchor="middle">Risk</text>
+            <!-- Axis -->
+            <line x1="12" y1="140" x2="360" y2="140" stroke="rgba(168,168,184,0.06)" stroke-width="0.5"/>
+            <text x="186" y="153" font-family="JetBrains Mono" font-size="5.5" fill="rgba(168,168,184,0.25)" text-anchor="middle">ENGAGEMENT FREQUENCY →</text>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="tag">Behavioral Analysis</span>
+            <span class="tag">Segmentation</span>
+          </div>
+          <h3 class="project-title">Player Segmentation Dashboard</h3>
+          <p class="project-challenge">Marketing teams lacked a systematic way to identify and prioritize high-value member segments, resulting in blanket campaign strategies with low conversion efficiency.</p>
+          <div class="project-insights">
+            <div class="insights-label">Key Outcomes</div>
+            <ul class="insights-list">
+              <li>Identified top 14% of members driving 61% of revenue</li>
+              <li>Enabled personalized retention campaigns for at-risk segments</li>
+              <li>Supported 3 targeted promotions with measurable lift</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="tech-pills">
+            <span class="tech-pill">SQL</span>
+            <span class="tech-pill">Power BI</span>
+            <span class="tech-pill">Python</span>
+          </div>
+          <a href="#" class="project-cta">View Case →</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="project-card reveal reveal-delay-4">
+        <div class="project-preview preview-marketing">
+          <svg width="90%" height="80%" viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+            <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(220,160,80,0.4)" letter-spacing="2">MARKETING PERFORMANCE</text>
+            <!-- Donut chart -->
+            <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="22"/>
+            <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="22" stroke-dasharray="160 92" stroke-dashoffset="40"/>
+            <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(74,127,212,0.4)" stroke-width="22" stroke-dasharray="60 192" stroke-dashoffset="-120"/>
+            <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(80,200,120,0.3)" stroke-width="22" stroke-dasharray="32 220" stroke-dashoffset="-180"/>
+            <text x="85" y="87" font-family="Cormorant Garant, serif" font-size="13" fill="rgba(201,168,76,0.7)" text-anchor="middle">KPI</text>
+            <text x="85" y="99" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)" text-anchor="middle">HEALTH</text>
+            <!-- Legend items -->
+            <rect x="150" y="40" width="8" height="8" rx="1" fill="rgba(201,168,76,0.5)"/>
+            <text x="164" y="48" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Email 64%</text>
+            <rect x="150" y="58" width="8" height="8" rx="1" fill="rgba(74,127,212,0.4)"/>
+            <text x="164" y="66" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Social 24%</text>
+            <rect x="150" y="76" width="8" height="8" rx="1" fill="rgba(80,200,120,0.3)"/>
+            <text x="164" y="84" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Events 12%</text>
+            <!-- Metrics panel -->
+            <rect x="250" y="30" width="110" height="100" rx="2" fill="rgba(201,168,76,0.03)" stroke="rgba(201,168,76,0.08)" stroke-width="0.5"/>
+            <text x="305" y="52" font-family="JetBrains Mono" font-size="5" fill="rgba(201,168,76,0.35)" text-anchor="middle">CAMPAIGNS</text>
+            <text x="305" y="67" font-family="Cormorant Garant, serif" font-size="18" fill="rgba(201,168,76,0.65)" text-anchor="middle">24</text>
+            <line x1="262" y1="78" x2="348" y2="78" stroke="rgba(168,168,184,0.06)" stroke-width="0.5"/>
+            <text x="305" y="95" font-family="JetBrains Mono" font-size="5" fill="rgba(168,168,184,0.3)" text-anchor="middle">ACTIVE KPIs</text>
+            <text x="305" y="110" font-family="Cormorant Garant, serif" font-size="18" fill="rgba(168,168,184,0.5)" text-anchor="middle">47</text>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="tag">Campaign Monitoring</span>
+            <span class="tag">Strategic KPIs</span>
+          </div>
+          <h3 class="project-title">Marketing Performance Dashboard</h3>
+          <p class="project-challenge">Department heads needed a consolidated, real-time view of campaign performance across multiple channels — replacing a weekly manual Excel process with dynamic BI reporting.</p>
+          <div class="project-insights">
+            <div class="insights-label">Key Outcomes</div>
+            <ul class="insights-list">
+              <li>Consolidated 7 reporting sources into 1 live dashboard</li>
+              <li>Reduced monthly reporting cycle from 3 days to 4 hours</li>
+              <li>Tracked 47 KPIs across 24 simultaneous campaigns</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="tech-pills">
+            <span class="tech-pill">Power BI</span>
+            <span class="tech-pill">DAX</span>
+            <span class="tech-pill">SQL</span>
+          </div>
+          <a href="#" class="project-cta">View Case →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================
+     IMPACT
+     ============================================ -->
+<section class="impact" id="impact">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow" style="justify-content:center;display:flex;">Business Impact</div>
+      <h2 class="display display-md impact-headline">Delivering Insights<br>That Drive Results</h2>
+      <p class="impact-sub">Every metric here represents a real business decision made with greater confidence.</p>
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat-cell">
+        <span class="stat-number" data-target="20">0</span>
+        <div class="stat-label">Dashboards Developed</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number" data-target="48">0</span>
+        <div class="stat-label">Promotions Analyzed</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number" data-target="12">0</span>
+        <div class="stat-label">Reports Automated</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number" data-target="100">0</span>
+        <div class="stat-label">Business Insights Delivered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================
+     TESTIMONIALS
+     ============================================ -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Client Voices</div>
+      <h2 class="display display-md">What Stakeholders Say</h2>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">Jhon transformed how our marketing team operates. What used to take days to compile now arrives every Monday morning as a clean, decision-ready dashboard. His work directly improved our campaign response time.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MR</div>
+          <div>
+            <div class="author-name">Maria Reyes</div>
+            <div class="author-role">Marketing Manager · Casino Plus</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">The player segmentation model Jhon built was eye-opening. We discovered that just 14% of members were driving over 60% of our revenue — something we'd never quantified before. It completely shifted our retention strategy.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CL</div>
+          <div>
+            <div class="author-name">Carlos Lim</div>
+            <div class="author-role">Department Head · Marketing Analytics</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-3">
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">I've worked with many analysts, but Jhon stands out for understanding the business context behind the numbers. He doesn't just answer the question — he answers the question behind the question.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AP</div>
+          <div>
+            <div class="author-name">Arlene Pascual</div>
+            <div class="author-role">Operations Stakeholder · SLPHC</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================
+     CONTACT
+     ============================================ -->
+<section class="contact" id="contact">
+  <div class="container contact-inner">
+    <div class="reveal">
+      <div class="eyebrow" style="justify-content:center;display:flex;">Get In Touch</div>
+      <h2 class="display display-md contact-headline">
+        Let's Turn Data<br>
+        Into <em style="color:var(--gold);font-style:italic;">Decisions</em>
+      </h2>
+      <p class="contact-sub">Whether you're looking to build your first BI system, modernize existing reporting, or gain strategic clarity from your data — I'd love to hear about your challenge.</p>
+    </div>
+
+    <div class="contact-ctas reveal reveal-delay-1">
+      <a href="mailto:jh0ntrinidad24@gmail.com" class="btn-primary">Send a Message →</a>
+      <a href="https://linkedin.com/in/jotrinidad" target="_blank" rel="noopener" class="btn-outline">View LinkedIn</a>
+    </div>
+
+    <div class="social-row reveal reveal-delay-2">
+      <a href="https://linkedin.com/in/jotrinidad" target="_blank" rel="noopener" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com" target="_blank" rel="noopener" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:jh0ntrinidad24@gmail.com" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="tel:+639488210586" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +63 948 821 0586
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2025 Jhon Joseph Y. Trinidad. Pampanga, Philippines.</span>
+    <span class="footer-brand">JJ · Trinidad</span>
+  </div>
+</footer>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+
+const closeMenu = () => {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+};
+
+mobileClose.addEventListener('click', closeMenu);
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+
+// Animated counters
+const counters = document.querySelectorAll('[data-target]');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.target);
+    const duration = 1600;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = Math.floor(current) + (target >= 100 ? '+' : '+');
+      if (current >= target) {
+        el.textContent = target + '+';
+        clearInterval(timer);
+      }
+    }, 16);
+    counterObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(el => counterObserver.observe(el));
+
+// Smooth scroll for anchors
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
