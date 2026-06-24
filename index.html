@@ -197,7 +197,15 @@ nav.scrolled {
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  padding: 4px;
+  padding: 8px;
+  background: none;
+  border: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .hamburger span {
@@ -380,14 +388,19 @@ nav.scrolled {
   align-items: center;
   justify-content: center;
   height: 520px;
+  width: 100%;
 }
 
 .constellation-wrap {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 
 /* Rotating orbit text */
@@ -1256,6 +1269,8 @@ footer {
   transition: color 0.2s;
   background: none;
   border: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-close:hover { color: var(--gold); }
@@ -1495,9 +1510,9 @@ footer {
       <li><a href="#impact">Impact</a></li>
       <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
     </ul>
-    <div class="hamburger" id="hamburger" role="button" aria-label="Open menu">
+    <button class="hamburger" id="hamburger" aria-label="Open navigation menu" type="button">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -2207,20 +2222,37 @@ const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileClose = document.getElementById('mobileClose');
 
-hamburger.addEventListener('click', () => {
+function openMenu() {
   mobileMenu.classList.add('open');
   document.body.style.overflow = 'hidden';
-});
+}
 
-const closeMenu = () => {
+function closeMenu() {
   mobileMenu.classList.remove('open');
   document.body.style.overflow = '';
-};
+}
+
+// Use touchend + click for maximum phone compatibility
+hamburger.addEventListener('click', openMenu);
+hamburger.addEventListener('touchend', (e) => { e.preventDefault(); openMenu(); });
 
 mobileClose.addEventListener('click', closeMenu);
+mobileClose.addEventListener('touchend', (e) => { e.preventDefault(); closeMenu(); });
 
 document.querySelectorAll('.mobile-link').forEach(link => {
-  link.addEventListener('click', closeMenu);
+  link.addEventListener('click', () => {
+    closeMenu();
+  });
+  link.addEventListener('touchend', (e) => {
+    // let the browser follow the href after closing
+    closeMenu();
+  });
+});
+
+// Nav logo scrolls to top
+document.querySelector('.nav-logo').addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Reveal on scroll
