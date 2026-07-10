@@ -349,30 +349,24 @@ nav.scrolled {
   z-index: 3;
   flex-shrink: 0;
 }
-.portrait-placeholder {
+.portrait-frame {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--card2) 0%, var(--card) 100%);
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 0 60px rgba(201,168,76,0.08), 0 0 120px rgba(74,127,212,0.06);
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg,var(--card2) 0%,var(--card) 100%);
+  box-shadow: 0 0 60px rgba(201,168,76,.08),0 0 120px rgba(74,127,212,.06);
 }
-.portrait-initials {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 3.5rem; font-weight: 300;
-  color: var(--gold); opacity: 0.6;
-  letter-spacing: 0.05em; line-height: 1;
-}
-.portrait-label {
-  font-size: 0.6rem; letter-spacing: 0.2em;
-  color: var(--silver); opacity: 0.5;
-  text-transform: uppercase;
+.portrait-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
 }
 
 /* ============================================
@@ -716,7 +710,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   .constellation-wrap { width: 360px; height: 360px; }
   .orbit-ring { width: 360px; height: 360px; }
   .orbit-ring-inner { width: 260px; height: 260px; }
-  .portrait-placeholder { width: 180px; height: 180px; }
+  .portrait-frame { width: 180px; height: 180px; }
   .portrait-initials { font-size: 3rem; }
 }
 
@@ -751,7 +745,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   }
   .orbit-ring { width: 280px; height: 280px; }
   .orbit-ring-inner { width: 200px; height: 200px; }
-  .portrait-placeholder { width: 150px; height: 150px; }
+  .portrait-frame { width: 150px; height: 150px; }
   .portrait-initials { font-size: 2.6rem; }
   .portrait-label { font-size: 0.55rem; }
 
@@ -821,7 +815,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   .constellation-wrap { width: 240px; height: 240px; }
   .orbit-ring { width: 240px; height: 240px; }
   .orbit-ring-inner { width: 172px; height: 172px; }
-  .portrait-placeholder { width: 128px; height: 128px; }
+  .portrait-frame { width: 128px; height: 128px; }
   .portrait-initials { font-size: 2.2rem; }
 
   .badge { font-size: 0.62rem; padding: 0.28rem 0.65rem; }
@@ -847,7 +841,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   .constellation-wrap { width: 210px; height: 210px; }
   .orbit-ring { width: 210px; height: 210px; }
   .orbit-ring-inner { width: 150px; height: 150px; }
-  .portrait-placeholder { width: 112px; height: 112px; }
+  .portrait-frame { width: 112px; height: 112px; }
   .portrait-initials { font-size: 1.9rem; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .social-row { grid-template-columns: 1fr; max-width: 200px; }
@@ -957,10 +951,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
 
         <!-- Portrait (normal flow child of constellation-wrap flex) -->
         <div class="portrait-frame">
-          <div class="portrait-placeholder">
-            <span class="portrait-initials">JJT</span>
-            <span class="portrait-label">Data Analyst</span>
-          </div>
+          <img src="DP Professional Look.png" alt="Jhon Joseph Trinidad" class="portrait-image">
         </div>
 
       </div>
