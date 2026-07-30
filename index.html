@@ -690,6 +690,78 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
 .footer-brand { font-family: 'Cormorant Garant', serif; font-size: 0.9rem; color: rgba(201,168,76,0.4); letter-spacing: 0.05em; }
 
 /* ============================================
+   CAROUSELS (Services / Tools / Projects)
+   ============================================ */
+.carousel { position: relative; }
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+/* Slide-internal grids reuse the same visual language as the original grids */
+.carousel-slide .services-grid { grid-template-columns: repeat(2, 1fr); }
+.carousel-slide .tools-grid { grid-template-columns: repeat(3, 1fr); }
+.carousel-slide .projects-grid {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.carousel-arrow {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-silver);
+  background: var(--card);
+  color: var(--gold);
+  display: grid; place-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.carousel-arrow svg { width: 16px; height: 16px; }
+.carousel-arrow:hover { border-color: var(--gold); background: var(--gold-dim); transform: translateY(-1px); }
+.carousel-arrow:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.carousel-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border-silver);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+.carousel-dot:hover { background: rgba(201,168,76,0.4); }
+.carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+
+@media (max-width: 768px) {
+  .carousel-slide .services-grid { grid-template-columns: 1fr; }
+  .carousel-slide .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .carousel-controls { margin-top: 2rem; gap: 1.2rem; }
+}
+
+/* ============================================
    SCROLL ANIMATIONS
    ============================================ */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -1003,16 +1075,55 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
       <h2 class="display display-md">Core Expertise</h2>
       <p>Strategic analytics services designed to solve real business problems — not just produce reports.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal reveal-delay-1"><div class="service-icon">🧠</div><div class="service-title">Business Intelligence</div><div class="service-desc">End-to-end BI solutions that consolidate siloed data into unified, decision-ready intelligence for leadership and operations teams.</div></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-icon">📢</div><div class="service-title">Marketing Analytics</div><div class="service-desc">Campaign performance analysis, audience segmentation, and attribution modeling that optimizes marketing spend and maximizes ROI.</div></div>
-      <div class="service-card reveal reveal-delay-3"><div class="service-icon">⚡</div><div class="service-title">Power BI Dashboards</div><div class="service-desc">Interactive, executive-level dashboards built with DAX and Power Query, designed for clarity, not complexity.</div></div>
-      <div class="service-card reveal reveal-delay-1"><div class="service-icon">🎯</div><div class="service-title">KPI Reporting</div><div class="service-desc">Automated weekly and monthly reporting systems that surface the metrics that matter — on time, every time.</div></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-icon">🗄️</div><div class="service-title">SQL Analytics</div><div class="service-desc">Advanced query engineering that extracts meaningful signals from large relational databases with speed and precision.</div></div>
-      <div class="service-card reveal reveal-delay-3"><div class="service-icon">📊</div><div class="service-title">Data Visualization</div><div class="service-desc">Translating complex analytical outputs into compelling visual narratives that stakeholders understand and trust.</div></div>
-      <div class="service-card reveal reveal-delay-1"><div class="service-icon">💼</div><div class="service-title">Remote Work & Virtual Assistance</div><div class="service-desc">Leveraging 3+ years of experience supporting international teams with calendar management, process documentation, and AI-powered productivity tools to deliver high-quality, cross-functional remote support.</div></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-icon">👥</div><div class="service-title">Access & Identity Management</div><div class="service-desc">Expertise in managing enterprise system credentials, user authentication, and periodic access audits via platforms like ServiceNow, Saviynt, and OKTA to ensure compliance and resolve support tickets within SLA targets.</div></div>
-      <div class="service-card reveal reveal-delay-3"><div class="service-icon">🤖</div><div class="service-title">Data Automation</div><div class="service-desc">Automating high-volume reporting workflows via Power Automate and AI-driven processes, shifting analyst focus from manual operations to high-impact strategic storytelling.</div></div>
+    <div class="carousel" id="servicesCarousel">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="servicesTrack">
+
+          <div class="carousel-slide">
+            <div class="services-grid">
+              <div class="service-card reveal reveal-delay-1"><div class="service-icon">🧠</div><div class="service-title">Business Intelligence</div><div class="service-desc">End-to-end BI solutions that consolidate siloed data into unified, decision-ready intelligence for leadership and operations teams.</div></div>
+              <div class="service-card reveal reveal-delay-2"><div class="service-icon">📢</div><div class="service-title">Marketing Analytics</div><div class="service-desc">Campaign performance analysis, audience segmentation, and attribution modeling that optimizes marketing spend and maximizes ROI.</div></div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="services-grid">
+              <div class="service-card reveal reveal-delay-1"><div class="service-icon">⚡</div><div class="service-title">Power BI Dashboards</div><div class="service-desc">Interactive, executive-level dashboards built with DAX and Power Query, designed for clarity, not complexity.</div></div>
+              <div class="service-card reveal reveal-delay-2"><div class="service-icon">🎯</div><div class="service-title">KPI Reporting</div><div class="service-desc">Automated weekly and monthly reporting systems that surface the metrics that matter — on time, every time.</div></div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="services-grid">
+              <div class="service-card reveal reveal-delay-1"><div class="service-icon">🗄️</div><div class="service-title">SQL Analytics</div><div class="service-desc">Advanced query engineering that extracts meaningful signals from large relational databases with speed and precision.</div></div>
+              <div class="service-card reveal reveal-delay-2"><div class="service-icon">📊</div><div class="service-title">Data Visualization</div><div class="service-desc">Translating complex analytical outputs into compelling visual narratives that stakeholders understand and trust.</div></div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="services-grid">
+              <div class="service-card reveal reveal-delay-1"><div class="service-icon">💼</div><div class="service-title">Remote Work & Virtual Assistance</div><div class="service-desc">Leveraging 3+ years of experience supporting international teams with calendar management, process documentation, and AI-powered productivity tools to deliver high-quality, cross-functional remote support.</div></div>
+              <div class="service-card reveal reveal-delay-2"><div class="service-icon">👥</div><div class="service-title">Access & Identity Management</div><div class="service-desc">Expertise in managing enterprise system credentials, user authentication, and periodic access audits via platforms like ServiceNow, Saviynt, and OKTA to ensure compliance and resolve support tickets within SLA targets.</div></div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="services-grid">
+              <div class="service-card reveal reveal-delay-1"><div class="service-icon">🤖</div><div class="service-title">Data Automation</div><div class="service-desc">Automating high-volume reporting workflows via Power Automate and AI-driven processes, shifting analyst focus from manual operations to high-impact strategic storytelling.</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-arrow" id="servicesPrev" type="button" aria-label="Previous services">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="carousel-dots" id="servicesDots"></div>
+        <button class="carousel-arrow" id="servicesNext" type="button" aria-label="Next services">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -1026,28 +1137,52 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
       <div class="eyebrow">Technology Stack</div>
       <h2 class="display display-md">Tools of the Trade</h2>
     </div>
-    <div class="tools-grid">
-      <!-- Analytics & BI -->
-    <div class="tool-cell"><div class="tool-icon"><img src="Power-BI-Logo.png" alt="Power BI" width="35" height="35"></div><span class="tool-name">Power BI</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="SQL.png" alt="SQL" width="35" height="35"></div><span class="tool-name">SQL</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="Excel.png" alt="Excel" width="35" height="35"></div><span class="tool-name">Excel</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="Dax.png" alt="DAX" width="35" height="35"></div><span class="tool-name">DAX</span></div>
-    <div class="tool-cell"><div class="tool-icon"><span style="color:#4A7FD4;">PQ</span></div><span class="tool-name">Power Query</span></div>
-    
-    <!-- Development & Automation -->
-    <div class="tool-cell"><div class="tool-icon"><img src="Python.png" alt="Python" width="35" height="35"></div><span class="tool-name">Python</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="HTML.png" alt="HTML" width="35" height="35"></div><span class="tool-name">HTML</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="PHP.png" alt="PHP" width="35" height="35"></div><span class="tool-name">PHP</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="github.png" alt="GitHub" width="35" height="35"></div><span class="tool-name">GitHub</span></div>
-    
-    <!-- Enterprise & Collaboration -->
-    <div class="tool-cell"><div class="tool-icon"><img src="WD.png" alt="Workday" width="35" height="35"></div><span class="tool-name">Workday</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="SAP.png" alt="SAP" width="35" height="35"></div><span class="tool-name">SAP</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="Jira.png" alt="JIRA" width="35" height="35"></div><span class="tool-name">JIRA</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="365.png" alt="MS365" width="35" height="35"></div><span class="tool-name">MS365</span></div>
-    <div class="tool-cell"><div class="tool-icon"><img src="Slack.png" alt="Slack" width="35" height="35"></div><span class="tool-name">Slack</span></div>
-      <div class="tool-cell"><div class="tool-icon"><span style="color:#0059DC;">PA</span></div><span class="tool-name">Power Automate</span></div>
-    <div class="tool-cell"><div class="tool-icon"><span style="color:#800080;">AI</span></div><span class="tool-name">AI Tools</span></div>
+    <div class="carousel" id="toolsCarousel">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="toolsTrack">
+
+          <div class="carousel-slide">
+            <div class="tools-grid">
+              <div class="tool-cell"><div class="tool-icon"><img src="Power-BI-Logo.png" alt="Power BI" width="35" height="35"></div><span class="tool-name">Power BI</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="SQL.png" alt="SQL" width="35" height="35"></div><span class="tool-name">SQL</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="Excel.png" alt="Excel" width="35" height="35"></div><span class="tool-name">Excel</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="Dax.png" alt="DAX" width="35" height="35"></div><span class="tool-name">DAX</span></div>
+              <div class="tool-cell"><div class="tool-icon"><span style="color:#4A7FD4;">PQ</span></div><span class="tool-name">Power Query</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="Python.png" alt="Python" width="35" height="35"></div><span class="tool-name">Python</span></div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="tools-grid">
+              <div class="tool-cell"><div class="tool-icon"><img src="HTML.png" alt="HTML" width="35" height="35"></div><span class="tool-name">HTML</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="PHP.png" alt="PHP" width="35" height="35"></div><span class="tool-name">PHP</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="github.png" alt="GitHub" width="35" height="35"></div><span class="tool-name">GitHub</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="WD.png" alt="Workday" width="35" height="35"></div><span class="tool-name">Workday</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="SAP.png" alt="SAP" width="35" height="35"></div><span class="tool-name">SAP</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="Jira.png" alt="JIRA" width="35" height="35"></div><span class="tool-name">JIRA</span></div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="tools-grid">
+              <div class="tool-cell"><div class="tool-icon"><img src="365.png" alt="MS365" width="35" height="35"></div><span class="tool-name">MS365</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="Slack.png" alt="Slack" width="35" height="35"></div><span class="tool-name">Slack</span></div>
+              <div class="tool-cell"><div class="tool-icon"><span style="color:#0059DC;">PA</span></div><span class="tool-name">Power Automate</span></div>
+              <div class="tool-cell"><div class="tool-icon"><span style="color:#800080;">AI</span></div><span class="tool-name">AI Tools</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-arrow" id="toolsPrev" type="button" aria-label="Previous tools">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="carousel-dots" id="toolsDots"></div>
+        <button class="carousel-arrow" id="toolsNext" type="button" aria-label="Next tools">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -1062,7 +1197,12 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
       <h2 class="display display-md">Projects That Moved the Needle</h2>
       <p>A selection of analytical work that directly informed executive strategy and measurable business outcomes.</p>
     </div>
-    <div class="projects-grid">
+    <div class="carousel" id="projectsCarousel">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="projectsTrack">
+
+          <div class="carousel-slide">
+            <div class="projects-grid">
       <div class="project-card reveal reveal-delay-1">
         <div class="project-preview preview-feast">
           <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
@@ -1109,8 +1249,12 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
           <a href="#" class="project-cta">View Case →</a>
         </div>
       </div>
+            </div>
+          </div>
 
-      <div class="project-card reveal reveal-delay-2">
+          <div class="carousel-slide">
+            <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
         <div class="project-preview preview-promo">
           <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
             <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(80,200,120,0.4)" letter-spacing="2">PROMOTION ROI ANALYSIS</text>
@@ -1142,8 +1286,12 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
           <a href="#" class="project-cta">View Case →</a>
         </div>
       </div>
+            </div>
+          </div>
 
-      <div class="project-card reveal reveal-delay-3">
+          <div class="carousel-slide">
+            <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
         <div class="project-preview preview-player">
           <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
             <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(180,80,220,0.4)" letter-spacing="2">PLAYER SEGMENTATION</text>
@@ -1179,8 +1327,12 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
           <a href="#" class="project-cta">View Case →</a>
         </div>
       </div>
+            </div>
+          </div>
 
-      <div class="project-card reveal reveal-delay-4">
+          <div class="carousel-slide">
+            <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
         <div class="project-preview preview-marketing">
           <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
             <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(220,160,80,0.4)" letter-spacing="2">MARKETING PERFORMANCE</text>
@@ -1218,6 +1370,20 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
           <div class="tech-pills"><span class="tech-pill">Power BI</span><span class="tech-pill">DAX</span><span class="tech-pill">SQL</span></div>
           <a href="#" class="project-cta">View Case →</a>
         </div>
+      </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-arrow" id="projectsPrev" type="button" aria-label="Previous project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="carousel-dots" id="projectsDots"></div>
+        <button class="carousel-arrow" id="projectsNext" type="button" aria-label="Next project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -1379,6 +1545,67 @@ const counterObserver = new IntersectionObserver(function(entries){
   });
 }, { threshold: 0.5 });
 counters.forEach(function(el){ counterObserver.observe(el); });
+
+// Generic carousel controller
+function initCarousel(config) {
+  var track = document.getElementById(config.track);
+  var prevBtn = document.getElementById(config.prev);
+  var nextBtn = document.getElementById(config.next);
+  var dotsWrap = document.getElementById(config.dots);
+  if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+  var slides = Array.prototype.slice.call(track.children);
+  var index = 0;
+
+  slides.forEach(function(_, i) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel-dot';
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.addEventListener('click', function () { goTo(i); });
+    dotsWrap.appendChild(dot);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+
+  function update() {
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === slides.length - 1;
+  }
+
+  function goTo(i) {
+    index = Math.max(0, Math.min(slides.length - 1, i));
+    update();
+  }
+
+  prevBtn.addEventListener('click', function () { goTo(index - 1); });
+  nextBtn.addEventListener('click', function () { goTo(index + 1); });
+
+  // Touch swipe support
+  var startX = 0, deltaX = 0, dragging = false;
+  track.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+    dragging = true;
+  }, { passive: true });
+  track.addEventListener('touchmove', function (e) {
+    if (!dragging) return;
+    deltaX = e.touches[0].clientX - startX;
+  }, { passive: true });
+  track.addEventListener('touchend', function () {
+    if (!dragging) return;
+    if (deltaX > 40) goTo(index - 1);
+    else if (deltaX < -40) goTo(index + 1);
+    dragging = false;
+    deltaX = 0;
+  });
+
+  update();
+}
+
+initCarousel({ track: 'servicesTrack', prev: 'servicesPrev', next: 'servicesNext', dots: 'servicesDots' });
+initCarousel({ track: 'toolsTrack', prev: 'toolsPrev', next: 'toolsNext', dots: 'toolsDots' });
+initCarousel({ track: 'projectsTrack', prev: 'projectsPrev', next: 'projectsNext', dots: 'projectsDots' });
 
 // Smooth scroll anchors
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
