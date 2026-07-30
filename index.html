@@ -797,6 +797,38 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
 }
 
 /* ============================================
+   DESKTOP OVERRIDE — disable carousel behavior
+   above the mobile breakpoint. All slides are
+   unwrapped back into a single unified grid,
+   exactly like the original (non-carousel) layout.
+   ============================================ */
+@media (min-width: 769px) {
+  .carousel-controls { display: none; }
+  .carousel-viewport { overflow: visible; height: auto !important; }
+  .carousel-track {
+    transform: none !important;
+    display: grid;
+    gap: 1px;
+    background: var(--border-silver);
+    border: 1px solid var(--border-silver);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .carousel-slide,
+  .carousel-slide > * { display: contents; }
+
+  #servicesTrack { grid-template-columns: repeat(3, 1fr); }
+  #toolsTrack { grid-template-columns: repeat(4, 1fr); }
+  #projectsTrack {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: none;
+    border: none;
+    margin-top: 3.5rem;
+  }
+}
+
+/* ============================================
    SCROLL ANIMATIONS
    ============================================ */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -1597,6 +1629,7 @@ function initCarousel(config) {
 
   var slides = Array.prototype.slice.call(track.children);
   var index = 0;
+  var isDesktop = window.matchMedia('(min-width: 769px)').matches;
 
   slides.forEach(function(_, i) {
     var dot = document.createElement('button');
@@ -1609,11 +1642,16 @@ function initCarousel(config) {
   var dots = Array.prototype.slice.call(dotsWrap.children);
 
   function setHeight() {
+    if (isDesktop) { viewport.style.height = ''; return; }
     var active = slides[index];
     if (active) viewport.style.height = active.offsetHeight + 'px';
   }
 
   function update() {
+    if (isDesktop) {
+      track.style.transform = '';
+      return;
+    }
     track.style.transform = 'translateX(-' + (index * 100) + '%)';
     dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
     prevBtn.disabled = index === 0;
@@ -1628,11 +1666,16 @@ function initCarousel(config) {
 
   prevBtn.addEventListener('click', function () { goTo(index - 1); });
   nextBtn.addEventListener('click', function () { goTo(index + 1); });
-  window.addEventListener('resize', setHeight);
+  window.addEventListener('resize', function () {
+    isDesktop = window.matchMedia('(min-width: 769px)').matches;
+    update();
+    setHeight();
+  });
 
-  // Touch swipe support
+  // Touch swipe support (mobile only — harmless on desktop since carousel is disabled there)
   var startX = 0, deltaX = 0, dragging = false;
   track.addEventListener('touchstart', function (e) {
+    if (isDesktop) return;
     startX = e.touches[0].clientX;
     dragging = true;
   }, { passive: true });
