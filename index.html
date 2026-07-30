@@ -696,14 +696,23 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
 .carousel-viewport {
   overflow: hidden;
   border-radius: var(--radius-lg);
+  width: 100%;
+  transition: height 0.35s ease;
 }
 .carousel-track {
   display: flex;
+  align-items: flex-start;
+  width: 100%;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .carousel-slide {
-  min-width: 100%;
-  flex-shrink: 0;
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 0 2px; /* keeps focus outlines / shadows from clipping at the edge */
 }
 
 /* Slide-internal grids reuse the same visual language as the original grids */
@@ -713,7 +722,18 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   grid-template-columns: 1fr;
   max-width: 640px;
   margin: 0 auto;
+  width: 100%;
 }
+
+/* Defensive wrapping so long content can never force a slide wider than its box */
+.carousel-slide, .carousel-slide * { min-width: 0; }
+.carousel-slide .service-desc,
+.carousel-slide .project-challenge,
+.carousel-slide .insights-list li,
+.carousel-slide .project-title,
+.carousel-slide .tool-name { overflow-wrap: break-word; word-break: break-word; }
+.carousel-slide .project-tags,
+.carousel-slide .tech-pills { flex-wrap: wrap; }
 
 .carousel-controls {
   display: flex;
@@ -759,6 +779,21 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   .carousel-slide .services-grid { grid-template-columns: 1fr; }
   .carousel-slide .tools-grid { grid-template-columns: repeat(2, 1fr); }
   .carousel-controls { margin-top: 2rem; gap: 1.2rem; }
+
+  /* Tighten project card so a full slide comfortably fits a phone screen */
+  .carousel-slide .project-preview { height: 150px; }
+  .carousel-slide .project-content { padding: 1.3rem; }
+  .carousel-slide .project-title { font-size: 1.2rem; }
+  .carousel-slide .project-challenge { font-size: 0.76rem; }
+  .carousel-slide .project-footer { padding: 0.9rem 1.3rem; }
+}
+
+@media (max-width: 480px) {
+  .carousel-slide .project-preview { height: 130px; }
+  .carousel-slide .project-content { padding: 1.1rem; }
+  .carousel-slide .project-title { font-size: 1.1rem; }
+  .carousel-slide .service-card { padding: 1.3rem 1.1rem; }
+  .carousel-slide .tool-cell { padding: 1rem 0.6rem; }
 }
 
 /* ============================================
@@ -870,6 +905,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
     gap: 0.75rem; width: 100%; max-width: 360px; margin: 0 auto;
   }
   .social-link { justify-content: center; }
+  .social-row a:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 200px; margin: 0 auto; width: 100%; }
 
   /* Section headers */
   .section-header { margin-bottom: 2.5rem; }
@@ -1468,6 +1504,10 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         +63 948 821 0586
       </a>
+      <a href="https://wa.me/639488210586?text=Hi%20Jhon%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.12h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.35c0-4.53 3.69-8.21 8.22-8.21 2.2 0 4.26.86 5.81 2.41a8.15 8.15 0 0 1 2.41 5.81c0 4.53-3.69 8.21-8.22 8.21zm4.51-6.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.24-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42-.14 0-.31-.02-.47-.02s-.43.06-.66.31c-.23.24-.86.85-.86 2.06 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.14-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
+        WhatsApp
+      </a>
     </div>
   </div>
 </section>
@@ -1549,10 +1589,11 @@ counters.forEach(function(el){ counterObserver.observe(el); });
 // Generic carousel controller
 function initCarousel(config) {
   var track = document.getElementById(config.track);
+  var viewport = track ? track.closest('.carousel-viewport') : null;
   var prevBtn = document.getElementById(config.prev);
   var nextBtn = document.getElementById(config.next);
   var dotsWrap = document.getElementById(config.dots);
-  if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+  if (!track || !prevBtn || !nextBtn || !dotsWrap || !viewport) return;
 
   var slides = Array.prototype.slice.call(track.children);
   var index = 0;
@@ -1567,11 +1608,17 @@ function initCarousel(config) {
   });
   var dots = Array.prototype.slice.call(dotsWrap.children);
 
+  function setHeight() {
+    var active = slides[index];
+    if (active) viewport.style.height = active.offsetHeight + 'px';
+  }
+
   function update() {
     track.style.transform = 'translateX(-' + (index * 100) + '%)';
     dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
     prevBtn.disabled = index === 0;
     nextBtn.disabled = index === slides.length - 1;
+    setHeight();
   }
 
   function goTo(i) {
@@ -1581,6 +1628,7 @@ function initCarousel(config) {
 
   prevBtn.addEventListener('click', function () { goTo(index - 1); });
   nextBtn.addEventListener('click', function () { goTo(index + 1); });
+  window.addEventListener('resize', setHeight);
 
   // Touch swipe support
   var startX = 0, deltaX = 0, dragging = false;
@@ -1601,6 +1649,8 @@ function initCarousel(config) {
   });
 
   update();
+  // Recalculate once images/fonts finish loading (their size affects card height)
+  window.addEventListener('load', setHeight);
 }
 
 initCarousel({ track: 'servicesTrack', prev: 'servicesPrev', next: 'servicesNext', dots: 'servicesDots' });
