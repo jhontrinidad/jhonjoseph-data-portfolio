@@ -8,9 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ============================================
-   DESIGN TOKENS
-   ============================================ */
 :root {
   --black: #0A0A0A;
   --deep: #0F0F14;
@@ -27,7 +24,6 @@
   --radius: 2px;
   --radius-lg: 4px;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
@@ -43,10 +39,6 @@ body {
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--black); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-/* ============================================
-   TYPOGRAPHY
-   ============================================ */
 .display { font-family: 'Cormorant Garant', serif; font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; }
 .display-lg { font-size: clamp(2.4rem, 8vw, 6.5rem); }
 .display-md { font-size: clamp(1.8rem, 5vw, 4rem); }
@@ -58,18 +50,8 @@ body {
   text-transform: uppercase;
   color: var(--gold);
 }
-
-/* ============================================
-   LAYOUT
-   ============================================ */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 clamp(1.2rem, 5vw, 4rem);
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.2rem, 5vw, 4rem); }
 section { position: relative; overflow: hidden; }
-
-/* Grain overlay */
 body::before {
   content: '';
   position: fixed;
@@ -79,10 +61,6 @@ body::before {
   pointer-events: none;
   z-index: 9999;
 }
-
-/* ============================================
-   NAVIGATION
-   ============================================ */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -104,690 +82,177 @@ nav.scrolled {
   margin: 0 auto;
   padding: 0 clamp(1.2rem, 5vw, 4rem);
 }
-.nav-logo {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--white);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-}
+.nav-logo { font-family: 'Cormorant Garant', serif; font-size: 1.3rem; font-weight: 500; color: var(--white); text-decoration: none; letter-spacing: 0.02em; }
 .nav-logo span { color: var(--gold); }
 .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-.nav-links a {
-  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--silver); text-decoration: none;
-  transition: color 0.2s; position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease;
-}
+.nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver); text-decoration: none; transition: color 0.2s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
 .nav-links a:hover { color: var(--gold); }
 .nav-links a:hover::after { width: 100%; }
-.nav-cta {
-  padding: 0.5rem 1.4rem; border: 1px solid var(--gold);
-  color: var(--gold) !important; border-radius: var(--radius);
-  font-size: 0.7rem !important; transition: all 0.3s ease !important;
-}
+.nav-cta { padding: 0.5rem 1.4rem; border: 1px solid var(--gold); color: var(--gold) !important; border-radius: var(--radius); font-size: 0.7rem !important; transition: all 0.3s ease !important; }
 .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
 .nav-cta::after { display: none !important; }
-
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 10px;
-  background: none;
-  border: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  min-width: 44px;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-}
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 1.5px;
-  background: var(--silver);
-  transition: all 0.3s;
-  pointer-events: none;
-}
-
-/* ============================================
-   MOBILE MENU
-   ============================================ */
-.mobile-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(10,10,10,0.98);
-  backdrop-filter: blur(20px);
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-}
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; background: none; border: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--silver); transition: all 0.3s; pointer-events: none; }
+.mobile-menu { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.98); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
 .mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 2.2rem; font-weight: 300;
-  color: var(--white); text-decoration: none;
-  letter-spacing: 0.05em; transition: color 0.2s;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
+.mobile-menu a { font-family: 'Cormorant Garant', serif; font-size: 2.2rem; font-weight: 300; color: var(--white); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .mobile-menu a:hover { color: var(--gold); }
-.mobile-close {
-  position: absolute; top: 1.5rem; right: 1.5rem;
-  width: 44px; height: 44px;
-  display: grid; place-items: center;
-  cursor: pointer; color: var(--silver);
-  font-size: 1.5rem; transition: color 0.2s;
-  background: none; border: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
+.mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer; color: var(--silver); font-size: 1.5rem; transition: color 0.2s; background: none; border: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .mobile-close:hover { color: var(--gold); }
-
-/* ============================================
-   HERO
-   ============================================ */
-.hero {
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 7rem 0 4rem;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(74,127,212,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
-}
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  width: 100%;
-}
-
-/* Hero Left */
+.hero { min-height: 100svh; display: grid; place-items: center; padding: 7rem 0 4rem; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(74,127,212,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 50%); }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; }
 .hero-left { position: relative; z-index: 2; }
-.hero-eyebrow {
-  display: flex; align-items: center;
-  gap: 0.75rem; margin-bottom: 1.5rem;
-}
-.hero-eyebrow::before {
-  content: ''; display: block;
-  width: 32px; height: 1px; background: var(--gold);
-  flex-shrink: 0;
-}
+.hero-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); flex-shrink: 0; }
 .hero-headline { color: var(--white); margin-bottom: 1.5rem; }
 .hero-headline em { font-style: italic; color: var(--gold); }
-.hero-sub {
-  font-size: 1rem; line-height: 1.85;
-  max-width: 480px; margin-bottom: 2.5rem;
-  color: rgba(168,168,184,0.85);
-}
+.hero-sub { font-size: 1rem; line-height: 1.85; max-width: 480px; margin-bottom: 2.5rem; color: rgba(168,168,184,0.85); }
 .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
-.badge {
-  padding: 0.35rem 0.9rem;
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  font-size: 0.7rem; font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--gold);
-  background: var(--gold-dim);
-  animation: badge-float 3s ease-in-out infinite;
-}
+.badge { padding: 0.35rem 0.9rem; border: 1px solid var(--border); border-radius: 100px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; color: var(--gold); background: var(--gold-dim); animation: badge-float 3s ease-in-out infinite; }
 .badge:nth-child(2) { animation-delay: 0.3s; }
 .badge:nth-child(3) { animation-delay: 0.6s; }
 .badge:nth-child(4) { animation-delay: 0.9s; }
-@keyframes badge-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
+@keyframes badge-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-
-/* Buttons */
-.btn-primary {
-  padding: 0.85rem 2rem;
-  background: var(--gold); color: var(--black);
-  border: none; border-radius: var(--radius);
-  font-size: 0.78rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  text-decoration: none; cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  position: relative; overflow: hidden;
-}
-.btn-primary::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-  opacity: 0; transition: opacity 0.3s;
-}
+.btn-primary { padding: 0.85rem 2rem; background: var(--gold); color: var(--black); border: none; border-radius: var(--radius); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; position: relative; overflow: hidden; }
+.btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent); opacity: 0; transition: opacity 0.3s; }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.3); }
 .btn-primary:hover::before { opacity: 1; }
-.btn-outline {
-  padding: 0.85rem 2rem;
-  background: transparent; color: var(--white);
-  border: 1px solid var(--border-silver);
-  border-radius: var(--radius);
-  font-size: 0.78rem; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  text-decoration: none; cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-flex; align-items: center; gap: 0.5rem;
-}
+.btn-outline { padding: 0.85rem 2rem; background: transparent; color: var(--white); border: 1px solid var(--border-silver); border-radius: var(--radius); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-.btn-ghost {
-  padding: 0.85rem 1.5rem;
-  background: transparent; color: var(--silver);
-  border: none; font-size: 0.78rem; font-weight: 400;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  text-decoration: none; cursor: pointer;
-  transition: color 0.2s;
-  display: inline-flex; align-items: center; gap: 0.5rem;
-}
+.btn-ghost { padding: 0.85rem 1.5rem; background: transparent; color: var(--silver); border: none; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: color 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
 .btn-ghost:hover { color: var(--gold); }
-
-/* ============================================
-   HERO RIGHT — CONSTELLATION
-   The key fix: hero-right is a simple flex container.
-   constellation-wrap is position:relative with a fixed
-   square size so everything inside can use
-   position:absolute and center naturally.
-   ============================================ */
-.hero-right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-/* This is the square "canvas" that holds all rings + portrait */
-.constellation-wrap {
-  position: relative;
-  width: 420px;
-  height: 420px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* All SVG rings are absolute, centered via top/left 50% */
-.orbit-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 420px;
-  height: 420px;
-  transform: translate(-50%, -50%);
-  animation: spin 25s linear infinite;
-  pointer-events: none;
-}
-.orbit-ring-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  transform: translate(-50%, -50%);
-  animation: spin 18s linear infinite reverse;
-  pointer-events: none;
-}
+.hero-right { display: flex; align-items: center; justify-content: center; width: 100%; }
+.constellation-wrap { position: relative; width: 420px; height: 420px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.orbit-ring { position: absolute; top: 50%; left: 50%; width: 420px; height: 420px; transform: translate(-50%, -50%); animation: spin 25s linear infinite; pointer-events: none; }
+.orbit-ring-inner { position: absolute; top: 50%; left: 50%; width: 300px; height: 300px; transform: translate(-50%, -50%); animation: spin 18s linear infinite reverse; pointer-events: none; }
 @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-
-/* Portrait sits in normal flow of the flex container */
-.portrait-frame {
-  position: relative;
-  z-index: 3;
-  flex-shrink: 0;
-}
-.portrait-frame {
-  position: relative;
-  z-index: 3;
-  flex-shrink: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  border:3px solid rgba(201,168,76,.7);
-  background: linear-gradient(135deg,var(--card2) 0%,var(--card) 100%);
-  box-shadow: 0 0 60px rgba(201,168,76,.08),0 0 120px rgba(74,127,212,.06);
-}
-.portrait-image{
-   width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center 15%;
-    transform:scale(1.15);
-}
-
-/* ============================================
-   DIVIDER
-   ============================================ */
-.section-divider {
-  width: 100%; height: 1px;
-  background: linear-gradient(to right, transparent, var(--border), transparent);
-}
-
-/* ============================================
-   ABOUT
-   ============================================ */
-.about {
-  padding: clamp(5rem, 10vw, 9rem) 0;
-  background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%);
-}
-.about-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 6rem; align-items: start;
-}
+.portrait-frame { position: relative; z-index: 3; flex-shrink: 0; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(201,168,76,.7); background: linear-gradient(135deg,var(--card2) 0%,var(--card) 100%); box-shadow: 0 0 60px rgba(201,168,76,.08),0 0 120px rgba(74,127,212,.06); }
+.portrait-image { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; transform: scale(1.15); }
+.section-divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
+.about { padding: clamp(5rem, 10vw, 9rem) 0; background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%); }
+.about-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; }
 .about-left { position: sticky; top: 8rem; }
-.about-pill {
-  display: inline-flex; align-items: center;
-  gap: 0.5rem; padding: 0.4rem 1rem;
-  background: var(--gold-dim); border: 1px solid var(--border);
-  border-radius: 100px; margin-bottom: 2rem;
-}
+.about-pill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 100px; margin-bottom: 2rem; }
 .about-roles { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2.5rem; }
-.role-item {
-  display: flex; align-items: center; gap: 1rem;
-  padding: 1rem 1.2rem;
-  border: 1px solid var(--border-silver);
-  border-radius: var(--radius-lg);
-  background: var(--card); transition: all 0.3s ease;
-}
+.role-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border: 1px solid var(--border-silver); border-radius: var(--radius-lg); background: var(--card); transition: all 0.3s ease; }
 .role-item:hover { border-color: var(--border); background: var(--card2); transform: translateX(4px); }
-.role-icon {
-  width: 36px; height: 36px;
-  background: var(--gold-dim); border-radius: 50%;
-  display: grid; place-items: center;
-  flex-shrink: 0; font-size: 1rem;
-}
+.role-icon { width: 36px; height: 36px; background: var(--gold-dim); border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; font-size: 1rem; }
 .role-label { font-size: 0.82rem; font-weight: 500; color: var(--white); }
 .role-sub { font-size: 0.7rem; color: var(--silver); margin-top: 1px; }
-.about-tagline {
-  font-family: 'Cormorant Garant', serif;
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 300; color: var(--white);
-  line-height: 1.4; margin-bottom: 2rem;
-}
+.about-tagline { font-family: 'Cormorant Garant', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 300; color: var(--white); line-height: 1.4; margin-bottom: 2rem; }
 .about-tagline strong { font-weight: 600; font-style: italic; color: var(--gold); }
 .about-body { display: flex; flex-direction: column; gap: 1.2rem; color: rgba(168,168,184,0.9); margin-bottom: 2.5rem; }
-.highlight-bar {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--border-silver);
-  border: 1px solid var(--border-silver);
-  border-radius: var(--radius-lg); overflow: hidden; margin-top: 2rem;
-}
+.highlight-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-silver); border: 1px solid var(--border-silver); border-radius: var(--radius-lg); overflow: hidden; margin-top: 2rem; }
 .highlight-cell { background: var(--card); padding: 1.4rem 1.2rem; text-align: center; }
-.highlight-num {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 2.2rem; font-weight: 300;
-  color: var(--gold); line-height: 1; display: block;
-}
-.highlight-lbl {
-  font-size: 0.68rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--silver); margin-top: 0.3rem;
-}
-
-/* ============================================
-   EXPERTISE
-   ============================================ */
+.highlight-num { font-family: 'Cormorant Garant', serif; font-size: 2.2rem; font-weight: 300; color: var(--gold); line-height: 1; display: block; }
+.highlight-lbl { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver); margin-top: 0.3rem; }
 .expertise { padding: clamp(5rem, 10vw, 9rem) 0; background: var(--deep); }
 .section-header { text-align: center; margin-bottom: 4rem; }
 .section-header .display-md { color: var(--white); margin: 1rem 0; }
 .section-header p { max-width: 520px; margin: 0 auto; font-size: 0.95rem; color: var(--silver); }
-.services-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--border-silver);
-  border: 1px solid var(--border-silver);
-  border-radius: var(--radius-lg); overflow: hidden;
-}
-.service-card {
-  background: var(--card); padding: 2.2rem 1.8rem;
-  position: relative; overflow: hidden;
-  transition: all 0.4s ease; cursor: default;
-}
-.service-card::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, var(--gold-dim) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.4s;
-}
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-silver); border: 1px solid var(--border-silver); border-radius: var(--radius-lg); overflow: hidden; }
+.service-card { background: var(--card); padding: 2.2rem 1.8rem; position: relative; overflow: hidden; transition: all 0.4s ease; cursor: default; }
+.service-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--gold-dim) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; }
 .service-card:hover { background: var(--card2); transform: translateY(-2px); }
 .service-card:hover::before { opacity: 1; }
-.service-icon {
-  width: 44px; height: 44px;
-  background: var(--gold-dim); border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  display: grid; place-items: center;
-  margin-bottom: 1.4rem; font-size: 1.2rem;
-  transition: all 0.4s; position: relative; z-index: 1;
-}
+.service-icon { width: 44px; height: 44px; background: var(--gold-dim); border: 1px solid var(--border); border-radius: var(--radius-lg); display: grid; place-items: center; margin-bottom: 1.4rem; font-size: 1.2rem; transition: all 0.4s; position: relative; z-index: 1; }
 .service-card:hover .service-icon { background: var(--gold); border-color: var(--gold); }
-.service-title {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 1.2rem; font-weight: 500;
-  color: var(--white); margin-bottom: 0.6rem;
-  position: relative; z-index: 1;
-}
+.service-title { font-family: 'Cormorant Garant', serif; font-size: 1.2rem; font-weight: 500; color: var(--white); margin-bottom: 0.6rem; position: relative; z-index: 1; }
 .service-desc { font-size: 0.8rem; color: var(--silver); line-height: 1.7; position: relative; z-index: 1; }
-
-/* ============================================
-   TOOLS
-   ============================================ */
 .tools { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--black); }
-.tools-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 1px; background: var(--border-silver);
-  border: 1px solid var(--border-silver);
-  border-radius: var(--radius-lg); overflow: hidden;
-}
-.tool-cell {
-  background: var(--card); padding: 2rem 1.5rem;
-  display: flex; flex-direction: column;
-  align-items: center; gap: 0.8rem;
-  transition: all 0.3s; cursor: default;
-}
+.tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-silver); border: 1px solid var(--border-silver); border-radius: var(--radius-lg); overflow: hidden; }
+.tool-cell { background: var(--card); padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; transition: all 0.3s; cursor: default; }
 .tool-cell:hover { background: var(--card2); }
-.tool-icon {
-  width: 48px; height: 48px;
-  border-radius: var(--radius-lg);
-  display: grid; place-items: center;
-  font-size: 1.5rem; font-weight: 700;
-  border: 1px solid var(--border-silver);
-}
-.tool-name {
-  font-size: 0.72rem; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--silver); text-align: center;
-}
+.tool-icon { width: 48px; height: 48px; border-radius: var(--radius-lg); display: grid; place-items: center; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--border-silver); }
+.tool-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--silver); text-align: center; }
 .tool-cell:hover .tool-name { color: var(--gold); }
-
-/* ============================================
-   PROJECTS
-   ============================================ */
 .projects { padding: clamp(5rem, 10vw, 9rem) 0; background: var(--deep); }
-.projects-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1.5rem; margin-top: 3.5rem;
-}
-.project-card {
-  background: var(--card); border: 1px solid var(--border-silver);
-  border-radius: var(--radius-lg); overflow: hidden;
-  transition: all 0.4s ease;
-}
-.project-card:hover {
-  border-color: var(--border); transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,168,76,0.05);
-}
-.project-preview {
-  height: 200px; position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-}
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
+.project-card { background: var(--card); border: 1px solid var(--border-silver); border-radius: var(--radius-lg); overflow: hidden; transition: all 0.4s ease; }
+.project-card:hover { border-color: var(--border); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,168,76,0.05); }
+.project-preview { height: 200px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .project-preview svg { width: 90%; height: 90%; max-height: 100%; }
 .project-content { padding: 2rem; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
-.tag {
-  padding: 0.2rem 0.6rem; background: var(--gold-dim);
-  border: 1px solid var(--border); border-radius: 100px;
-  font-size: 0.62rem; color: var(--gold);
-  letter-spacing: 0.08em; text-transform: uppercase;
-}
-.project-title {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 1.5rem; font-weight: 500;
-  color: var(--white); margin-bottom: 0.8rem; line-height: 1.2;
-}
+.tag { padding: 0.2rem 0.6rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 100px; font-size: 0.62rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+.project-title { font-family: 'Cormorant Garant', serif; font-size: 1.5rem; font-weight: 500; color: var(--white); margin-bottom: 0.8rem; line-height: 1.2; }
 .project-challenge { font-size: 0.78rem; color: var(--silver); line-height: 1.7; margin-bottom: 1.2rem; }
 .project-insights { border-top: 1px solid var(--border-silver); padding-top: 1.2rem; margin-top: 1.2rem; }
-.insights-label {
-  font-size: 0.62rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
-}
+.insights-label { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
 .insights-list { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
-.insights-list li {
-  font-size: 0.78rem; color: var(--silver);
-  padding-left: 1rem; position: relative;
-}
+.insights-list li { font-size: 0.78rem; color: var(--silver); padding-left: 1rem; position: relative; }
 .insights-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.7rem; }
-.project-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.2rem 2rem; border-top: 1px solid var(--border-silver);
-}
+.project-footer { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-top: 1px solid var(--border-silver); }
 .tech-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-.tech-pill {
-  padding: 0.2rem 0.55rem;
-  background: rgba(74,127,212,0.08); border: 1px solid rgba(74,127,212,0.15);
-  border-radius: var(--radius); font-size: 0.62rem;
-  color: #7AABF0; font-family: 'JetBrains Mono', monospace;
-}
-.project-cta {
-  font-size: 0.7rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--gold); text-decoration: none;
-  display: flex; align-items: center; gap: 0.4rem;
-  transition: gap 0.2s; white-space: nowrap;
-}
+.tech-pill { padding: 0.2rem 0.55rem; background: rgba(74,127,212,0.08); border: 1px solid rgba(74,127,212,0.15); border-radius: var(--radius); font-size: 0.62rem; color: #7AABF0; font-family: 'JetBrains Mono', monospace; }
+.project-cta { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; white-space: nowrap; }
 .project-cta:hover { gap: 0.7rem; }
-
-/* Preview backgrounds */
 .preview-feast { background: linear-gradient(135deg, #1A1A2E 0%, #0F0F1A 100%); }
 .preview-promo { background: linear-gradient(135deg, #1A2E1A 0%, #0F1A0F 100%); }
 .preview-player { background: linear-gradient(135deg, #2E1A2E 0%, #1A0F1A 100%); }
 .preview-marketing { background: linear-gradient(135deg, #2E2A1A 0%, #1A170F 100%); }
-
-/* ============================================
-   IMPACT
-   ============================================ */
 .impact { padding: clamp(5rem, 10vw, 9rem) 0; background: var(--black); text-align: center; }
-.impact-headline {
-  color: var(--white); margin: 1rem auto;
-  max-width: 640px;
-}
+.impact-headline { color: var(--white); margin: 1rem auto; max-width: 640px; }
 .impact-sub { max-width: 480px; margin: 0 auto 4rem; color: var(--silver); }
-.stats-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 1px; background: var(--border-silver);
-  border: 1px solid var(--border-silver);
-  border-radius: var(--radius-lg); overflow: hidden;
-  max-width: 900px; margin: 0 auto;
-}
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-silver); border: 1px solid var(--border-silver); border-radius: var(--radius-lg); overflow: hidden; max-width: 900px; margin: 0 auto; }
 .stat-cell { background: var(--card); padding: 2.5rem 1.5rem; text-align: center; transition: background 0.3s; }
 .stat-cell:hover { background: var(--card2); }
-.stat-number {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 3.5rem; font-weight: 300;
-  color: var(--gold); line-height: 1;
-  display: block; margin-bottom: 0.5rem;
-}
+.stat-number { font-family: 'Cormorant Garant', serif; font-size: 3.5rem; font-weight: 300; color: var(--gold); line-height: 1; display: block; margin-bottom: 0.5rem; }
 .stat-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver); }
-
-/* ============================================
-   TESTIMONIALS
-   ============================================ */
 .testimonials { padding: clamp(5rem, 10vw, 9rem) 0; background: var(--deep); }
-.testimonials-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem; margin-top: 3.5rem;
-}
-.testimonial-card {
-  background: var(--card); border: 1px solid var(--border-silver);
-  border-radius: var(--radius-lg); padding: 2.2rem;
-  transition: all 0.3s;
-}
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.testimonial-card { background: var(--card); border: 1px solid var(--border-silver); border-radius: var(--radius-lg); padding: 2.2rem; transition: all 0.3s; }
 .testimonial-card:hover { border-color: var(--border); transform: translateY(-3px); }
-.quote-mark {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 4rem; color: var(--gold); opacity: 0.2;
-  line-height: 0.6; margin-bottom: 1.2rem; display: block;
-}
-.testimonial-text {
-  font-family: 'Cormorant Garant', serif;
-  font-size: 1.05rem; font-weight: 300; font-style: italic;
-  color: var(--white); line-height: 1.7; margin-bottom: 2rem;
-}
-.testimonial-author {
-  display: flex; align-items: center; gap: 1rem;
-  border-top: 1px solid var(--border-silver); padding-top: 1.2rem;
-}
-.author-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--gold-dim); border: 1px solid var(--border);
-  display: grid; place-items: center;
-  font-family: 'Cormorant Garant', serif;
-  font-size: 1rem; font-weight: 500; color: var(--gold); flex-shrink: 0;
-}
+.quote-mark { font-family: 'Cormorant Garant', serif; font-size: 4rem; color: var(--gold); opacity: 0.2; line-height: 0.6; margin-bottom: 1.2rem; display: block; }
+.testimonial-text { font-family: 'Cormorant Garant', serif; font-size: 1.05rem; font-weight: 300; font-style: italic; color: var(--white); line-height: 1.7; margin-bottom: 2rem; }
+.testimonial-author { display: flex; align-items: center; gap: 1rem; border-top: 1px solid var(--border-silver); padding-top: 1.2rem; }
+.author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--border); display: grid; place-items: center; font-family: 'Cormorant Garant', serif; font-size: 1rem; font-weight: 500; color: var(--gold); flex-shrink: 0; }
 .author-name { font-size: 0.82rem; font-weight: 500; color: var(--white); }
 .author-role { font-size: 0.7rem; color: var(--silver); margin-top: 1px; }
-
-/* ============================================
-   CONTACT
-   ============================================ */
 .contact { padding: clamp(6rem, 12vw, 11rem) 0; background: var(--black); position: relative; }
-.contact::before {
-  content: ''; position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
-  pointer-events: none;
-}
+.contact::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%); pointer-events: none; }
 .contact-inner { text-align: center; position: relative; z-index: 1; }
 .contact-headline { color: var(--white); margin: 1rem 0 1.5rem; }
-.contact-sub {
-  max-width: 520px; margin: 0 auto 3.5rem;
-  font-size: 1rem; color: var(--silver); line-height: 1.8;
-}
+.contact-sub { max-width: 520px; margin: 0 auto 3.5rem; font-size: 1rem; color: var(--silver); line-height: 1.8; }
 .contact-ctas { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 4rem; }
 .social-row { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-.social-link {
-  display: flex; align-items: center; gap: 0.6rem;
-  padding: 0.7rem 1.3rem;
-  border: 1px solid var(--border-silver); border-radius: var(--radius);
-  color: var(--silver); text-decoration: none;
-  font-size: 0.75rem; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  transition: all 0.3s;
-}
+.social-link { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 1.3rem; border: 1px solid var(--border-silver); border-radius: var(--radius); color: var(--silver); text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s; }
 .social-link:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-
-/* ============================================
-   FOOTER
-   ============================================ */
 footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background: var(--black); }
-.footer-inner {
-  display: flex; align-items: center;
-  justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-}
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
 .footer-copy { font-size: 0.72rem; color: rgba(168,168,184,0.4); }
 .footer-brand { font-family: 'Cormorant Garant', serif; font-size: 0.9rem; color: rgba(201,168,76,0.4); letter-spacing: 0.05em; }
-
-/* ============================================
-   CAROUSELS (Services / Tools / Projects)
-   ============================================ */
 .carousel { position: relative; }
-.carousel-viewport {
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  width: 100%;
-  transition: height 0.35s ease;
-}
-.carousel-track {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.carousel-slide {
-  flex: 0 0 100%;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  padding: 0 2px; /* keeps focus outlines / shadows from clipping at the edge */
-}
-
-/* Slide-internal grids reuse the same visual language as the original grids */
+.carousel-viewport { overflow: hidden; border-radius: var(--radius-lg); width: 100%; transition: height 0.35s ease; }
+.carousel-track { display: flex; align-items: flex-start; width: 100%; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.carousel-slide { flex: 0 0 100%; width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box; overflow-x: hidden; padding: 0 2px; }
 .carousel-slide .services-grid { grid-template-columns: repeat(2, 1fr); }
 .carousel-slide .tools-grid { grid-template-columns: repeat(3, 1fr); }
-.carousel-slide .projects-grid {
-  grid-template-columns: 1fr;
-  max-width: 640px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Defensive wrapping so long content can never force a slide wider than its box */
+.carousel-slide .projects-grid { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; width: 100%; }
 .carousel-slide, .carousel-slide * { min-width: 0; }
-.carousel-slide .service-desc,
-.carousel-slide .project-challenge,
-.carousel-slide .insights-list li,
-.carousel-slide .project-title,
-.carousel-slide .tool-name { overflow-wrap: break-word; word-break: break-word; }
-.carousel-slide .project-tags,
-.carousel-slide .tech-pills { flex-wrap: wrap; }
-
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-.carousel-arrow {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--border-silver);
-  background: var(--card);
-  color: var(--gold);
-  display: grid; place-items: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
+.carousel-slide .service-desc, .carousel-slide .project-challenge, .carousel-slide .insights-list li, .carousel-slide .project-title, .carousel-slide .tool-name { overflow-wrap: break-word; word-break: break-word; }
+.carousel-slide .project-tags, .carousel-slide .tech-pills { flex-wrap: wrap; }
+.carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
+.carousel-arrow { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-silver); background: var(--card); color: var(--gold); display: grid; place-items: center; cursor: pointer; transition: all 0.3s ease; flex-shrink: 0; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .carousel-arrow svg { width: 16px; height: 16px; }
 .carousel-arrow:hover { border-color: var(--gold); background: var(--gold-dim); transform: translateY(-1px); }
 .carousel-arrow:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
-.carousel-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.carousel-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--border-silver);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.3s ease;
-}
+.carousel-dots { display: flex; align-items: center; gap: 0.5rem; }
+.carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-silver); border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
 .carousel-dot:hover { background: rgba(201,168,76,0.4); }
 .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
-
 @media (max-width: 768px) {
   .carousel-slide .services-grid { grid-template-columns: 1fr; }
   .carousel-slide .tools-grid { grid-template-columns: repeat(2, 1fr); }
   .carousel-controls { margin-top: 2rem; gap: 1.2rem; }
-
-  /* Tighten project card so a full slide comfortably fits a phone screen */
   .carousel-slide .project-preview { height: 150px; }
   .carousel-slide .project-content { padding: 1.3rem; }
   .carousel-slide .project-title { font-size: 1.2rem; }
   .carousel-slide .project-challenge { font-size: 0.76rem; }
   .carousel-slide .project-footer { padding: 0.9rem 1.3rem; }
 }
-
 @media (max-width: 480px) {
   .carousel-slide .project-preview { height: 130px; }
   .carousel-slide .project-content { padding: 1.1rem; }
@@ -795,52 +260,21 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   .carousel-slide .service-card { padding: 1.3rem 1.1rem; }
   .carousel-slide .tool-cell { padding: 1rem 0.6rem; }
 }
-
-/* ============================================
-   DESKTOP OVERRIDE — disable carousel behavior
-   above the mobile breakpoint. All slides are
-   unwrapped back into a single unified grid,
-   exactly like the original (non-carousel) layout.
-   ============================================ */
 @media (min-width: 769px) {
   .carousel-controls { display: none; }
   .carousel-viewport { overflow: visible; height: auto !important; }
-  .carousel-track {
-    transform: none !important;
-    display: grid;
-    gap: 1px;
-    background: var(--border-silver);
-    border: 1px solid var(--border-silver);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-  }
-  .carousel-slide,
-  .carousel-slide > * { display: contents; }
-
+  .carousel-track { transform: none !important; display: grid; gap: 1px; background: var(--border-silver); border: 1px solid var(--border-silver); border-radius: var(--radius-lg); overflow: hidden; }
+  .carousel-slide, .carousel-slide > * { display: contents; }
   #servicesTrack { grid-template-columns: repeat(3, 1fr); }
   #toolsTrack { grid-template-columns: repeat(4, 1fr); }
-  #projectsTrack {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    background: none;
-    border: none;
-    margin-top: 3.5rem;
-  }
+  #projectsTrack { grid-template-columns: 1fr 1fr; gap: 1.5rem; background: none; border: none; margin-top: 3.5rem; }
 }
-
-/* ============================================
-   SCROLL ANIMATIONS
-   ============================================ */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
-
-/* ============================================
-   RESPONSIVE — TABLET ≤1024px
-   ============================================ */
 @media (max-width: 1024px) {
   .hero-inner { gap: 2rem; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -850,114 +284,58 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   .orbit-ring { width: 360px; height: 360px; }
   .orbit-ring-inner { width: 260px; height: 260px; }
   .portrait-frame { width: 180px; height: 180px; }
-  .portrait-initials { font-size: 3rem; }
 }
-
-/* ============================================
-   RESPONSIVE — MOBILE ≤768px
-   THE KEY FIX: hero stacks vertically.
-   constellation-wrap gets explicit smaller size.
-   Everything centers automatically.
-   ============================================ */
 @media (max-width: 768px) {
-  /* Nav */
   .nav-links { display: none; }
   .hamburger { display: flex; }
   nav { padding: 1rem 0; }
-
-  /* Hero stacks: portrait on top, text below */
   .hero { padding: 5rem 0 3rem; align-items: flex-start; }
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-    justify-items: center;
-  }
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; justify-items: center; }
   .hero-left { order: 2; width: 100%; }
   .hero-right { order: 1; width: 100%; }
-
-  /* ★ THE FIX: explicit square wrap, centered by flex */
-  .constellation-wrap {
-    width: 280px;
-    height: 280px;
-    margin: 0 auto;
-  }
+  .constellation-wrap { width: 280px; height: 280px; margin: 0 auto; }
   .orbit-ring { width: 280px; height: 280px; }
   .orbit-ring-inner { width: 200px; height: 200px; }
   .portrait-frame { width: 150px; height: 150px; }
-  .portrait-initials { font-size: 2.6rem; }
-  .portrait-label { font-size: 0.55rem; }
-
-  /* Hero text */
   .hero-eyebrow { justify-content: center; }
   .hero-sub { margin: 0 auto 2rem; font-size: 0.92rem; max-width: 100%; }
   .hero-badges { justify-content: center; }
   .hero-ctas { justify-content: center; flex-direction: column; align-items: center; }
-  .btn-primary, .btn-outline, .btn-ghost {
-    width: 100%; max-width: 300px; justify-content: center;
-  }
-
-  /* About */
+  .btn-primary, .btn-outline, .btn-ghost { width: 100%; max-width: 300px; justify-content: center; }
   .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-left { position: static; }
   .highlight-bar { grid-template-columns: repeat(3, 1fr); }
   .highlight-num { font-size: 1.8rem; }
-
-  /* Services */
   .services-grid { grid-template-columns: 1fr 1fr; }
   .service-card { padding: 1.5rem 1.2rem; }
-
-  /* Tools */
   .tools-grid { grid-template-columns: repeat(4, 1fr); }
   .tool-cell { padding: 1.2rem 0.5rem; }
   .tool-icon { width: 38px; height: 38px; }
   .tool-name { font-size: 0.58rem; }
-
-  /* Projects */
   .projects-grid { grid-template-columns: 1fr; }
   .project-preview { height: 160px; }
   .project-content { padding: 1.4rem; }
   .project-footer { padding: 1rem 1.4rem; flex-wrap: wrap; gap: 0.75rem; }
-
-  /* Stats */
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stat-number { font-size: 2.8rem; }
   .stat-cell { padding: 2rem 1rem; }
-
-  /* Testimonials */
   .testimonials-grid { grid-template-columns: 1fr; }
   .testimonial-card { padding: 1.6rem; }
-
-  /* Contact */
   .contact-ctas { flex-direction: column; align-items: center; }
-  .contact-ctas .btn-primary,
-  .contact-ctas .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
-  .social-row {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 0.75rem; width: 100%; max-width: 360px; margin: 0 auto;
-  }
+  .contact-ctas .btn-primary, .contact-ctas .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
+  .social-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; width: 100%; max-width: 360px; margin: 0 auto; }
   .social-link { justify-content: center; }
   .social-row a:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 200px; margin: 0 auto; width: 100%; }
-
-  /* Section headers */
   .section-header { margin-bottom: 2.5rem; }
   .section-header p { font-size: 0.88rem; }
   .footer-inner { flex-direction: column; text-align: center; gap: 0.5rem; }
 }
-
-/* ============================================
-   RESPONSIVE — SMALL PHONES ≤480px
-   ============================================ */
 @media (max-width: 480px) {
   .container { padding: 0 1rem; }
-
-  /* Even smaller constellation */
   .constellation-wrap { width: 240px; height: 240px; }
   .orbit-ring { width: 240px; height: 240px; }
   .orbit-ring-inner { width: 172px; height: 172px; }
   .portrait-frame { width: 128px; height: 128px; }
-  .portrait-initials { font-size: 2.2rem; }
-
   .badge { font-size: 0.62rem; padding: 0.28rem 0.65rem; }
   .services-grid { grid-template-columns: 1fr; }
   .tools-grid { grid-template-columns: repeat(2, 1fr); }
@@ -972,22 +350,16 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
   .about-tagline { font-size: clamp(1.1rem, 5.5vw, 1.4rem); }
   .about-body p { font-size: 0.88rem; }
 }
-
-/* ============================================
-   RESPONSIVE — TINY PHONES ≤360px
-   ============================================ */
 @media (max-width: 360px) {
   .container { padding: 0 0.85rem; }
   .constellation-wrap { width: 210px; height: 210px; }
   .orbit-ring { width: 210px; height: 210px; }
   .orbit-ring-inner { width: 150px; height: 150px; }
   .portrait-frame { width: 112px; height: 112px; }
-  .portrait-initials { font-size: 1.9rem; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .social-row { grid-template-columns: 1fr; max-width: 200px; }
   .highlight-bar { grid-template-columns: 1fr 1fr; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .orbit-ring, .orbit-ring-inner, .badge { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
@@ -1026,7 +398,6 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="container hero-inner">
-
     <div class="hero-left">
       <div class="hero-eyebrow">
         <span class="eyebrow">DATA ANALYST | REMOTE SUPPORT</span>
@@ -1046,15 +417,11 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
       <div class="hero-ctas">
         <a href="#projects" class="btn-primary">View My Work →</a>
         <a href="#contact" class="btn-outline">Contact Me</a>
-        <a href="Jhon_Trinidad-CV.pdf" download="Jhon_Trinidad-CV.pdf" class="btn-ghost">↓ Resume</a>
+        <a href="Files/Jhon_Trinidad-CV.pdf" download="Jhon_Trinidad-CV.pdf" class="btn-ghost">↓ Resume</a>
       </div>
     </div>
-
-    <!-- PORTRAIT — hero-right is pure flex, constellation-wrap is the positioned square -->
     <div class="hero-right">
       <div class="constellation-wrap">
-
-        <!-- Outer rotating ring with text -->
         <svg class="orbit-ring" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path id="orbitPath" d="M210,210 m-185,0 a185,185 0 1,1 370,0 a185,185 0 1,1 -370,0"/>
@@ -1062,7 +429,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
           <text fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1">
           <textPath href="#orbitPath" startOffset="0">
             <tspan font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(201,168,76,0.35)" letter-spacing="4">
-              BUSINESS INTELLIGENCE • DATA ANALYSYS & REPORTING • POWER BI • SQL • VIRTUAL ASSISTANCE • AI TOOLS & AUTOMATION •
+              BUSINESS INTELLIGENCE • DATA ANALYSIS & REPORTING • POWER BI • SQL • VIRTUAL ASSISTANCE • AI TOOLS & AUTOMATION •
             </tspan>
           </textPath>
           </text>
@@ -1080,23 +447,17 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
           <line x1="50"  y1="290" x2="50"  y2="130" stroke="rgba(74,127,212,0.08)" stroke-width="1"/>
           <line x1="50"  y1="130" x2="210" y2="25"  stroke="rgba(74,127,212,0.08)" stroke-width="1"/>
         </svg>
-
-        <!-- Inner ring -->
         <svg class="orbit-ring-inner" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
           <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(74,127,212,0.06)" stroke-width="1" stroke-dasharray="2 12"/>
           <circle cx="150" cy="20"  r="4" fill="rgba(74,127,212,0.5)"/>
           <circle cx="260" cy="215" r="3" fill="rgba(74,127,212,0.4)"/>
           <circle cx="40"  cy="215" r="4" fill="rgba(74,127,212,0.35)"/>
         </svg>
-
-        <!-- Portrait (normal flow child of constellation-wrap flex) -->
         <div class="portrait-frame">
-          <img src="DP Professional Look.png" alt="Jhon Joseph Trinidad" class="portrait-image">
+          <img src="images/DP_Professional_Look.png" alt="Jhon Joseph Trinidad" class="portrait-image">
         </div>
-
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1110,7 +471,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
       <h2 class="display display-md" style="color:var(--white);">Who I<br><em style="color:var(--gold);font-style:italic;">Am</em></h2>
       <div class="about-roles">
         <div class="role-item"><div class="role-icon">📊</div><div><div class="role-label">Data Analyst</div><div class="role-sub">SQL · Excel · Power Query</div></div></div>
-        <div class="role-item"><div class="role-icon">📈</div><div><div class="role-label">Marketing Analytics Specialist</div><div class="role-sub">Campaigns · Promotions · ROI · Pacing Report </div></div></div>
+        <div class="role-item"><div class="role-icon">📈</div><div><div class="role-label">Marketing Analytics Specialist</div><div class="role-sub">Campaigns · Promotions · ROI · Pacing Report</div></div></div>
         <div class="role-item"><div class="role-icon">🧠</div><div><div class="role-label">Business Intelligence Professional</div><div class="role-sub">Power BI · DAX · Dashboards</div></div></div>
         <div class="role-item"><div class="role-icon">🎯</div><div><div class="role-label">KPI Reporting Expert</div><div class="role-sub">Executive-ready insights</div></div></div>
         <div class="role-item"><div class="role-icon">🪪</div><div><div class="role-label">Access & Identity Management</div><div class="role-sub">JIRA · OKTA · Workday · SAP</div></div></div>
@@ -1146,41 +507,35 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
     <div class="carousel" id="servicesCarousel">
       <div class="carousel-viewport">
         <div class="carousel-track" id="servicesTrack">
-
           <div class="carousel-slide">
             <div class="services-grid">
               <div class="service-card reveal reveal-delay-1"><div class="service-icon">🧠</div><div class="service-title">Business Intelligence</div><div class="service-desc">End-to-end BI solutions that consolidate siloed data into unified, decision-ready intelligence for leadership and operations teams.</div></div>
               <div class="service-card reveal reveal-delay-2"><div class="service-icon">📢</div><div class="service-title">Marketing Analytics</div><div class="service-desc">Campaign performance analysis, audience segmentation, and attribution modeling that optimizes marketing spend and maximizes ROI.</div></div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="services-grid">
               <div class="service-card reveal reveal-delay-1"><div class="service-icon">⚡</div><div class="service-title">Power BI Dashboards</div><div class="service-desc">Interactive, executive-level dashboards built with DAX and Power Query, designed for clarity, not complexity.</div></div>
               <div class="service-card reveal reveal-delay-2"><div class="service-icon">🎯</div><div class="service-title">KPI Reporting</div><div class="service-desc">Automated weekly and monthly reporting systems that surface the metrics that matter — on time, every time.</div></div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="services-grid">
               <div class="service-card reveal reveal-delay-1"><div class="service-icon">🗄️</div><div class="service-title">SQL Analytics</div><div class="service-desc">Advanced query engineering that extracts meaningful signals from large relational databases with speed and precision.</div></div>
               <div class="service-card reveal reveal-delay-2"><div class="service-icon">📊</div><div class="service-title">Data Visualization</div><div class="service-desc">Translating complex analytical outputs into compelling visual narratives that stakeholders understand and trust.</div></div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="services-grid">
               <div class="service-card reveal reveal-delay-1"><div class="service-icon">💼</div><div class="service-title">Remote Work & Virtual Assistance</div><div class="service-desc">Leveraging 3+ years of experience supporting international teams with calendar management, process documentation, and AI-powered productivity tools to deliver high-quality, cross-functional remote support.</div></div>
               <div class="service-card reveal reveal-delay-2"><div class="service-icon">👥</div><div class="service-title">Access & Identity Management</div><div class="service-desc">Expertise in managing enterprise system credentials, user authentication, and periodic access audits via platforms like ServiceNow, Saviynt, and OKTA to ensure compliance and resolve support tickets within SLA targets.</div></div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="services-grid">
               <div class="service-card reveal reveal-delay-1"><div class="service-icon">🤖</div><div class="service-title">Data Automation</div><div class="service-desc">Automating high-volume reporting workflows via Power Automate and AI-driven processes, shifting analyst focus from manual operations to high-impact strategic storytelling.</div></div>
             </div>
           </div>
-
         </div>
       </div>
       <div class="carousel-controls">
@@ -1208,38 +563,34 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
     <div class="carousel" id="toolsCarousel">
       <div class="carousel-viewport">
         <div class="carousel-track" id="toolsTrack">
-
           <div class="carousel-slide">
             <div class="tools-grid">
-              <div class="tool-cell"><div class="tool-icon"><img src="Power-BI-Logo.png" alt="Power BI" width="35" height="35"></div><span class="tool-name">Power BI</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="SQL.png" alt="SQL" width="35" height="35"></div><span class="tool-name">SQL</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="Excel.png" alt="Excel" width="35" height="35"></div><span class="tool-name">Excel</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="Dax.png" alt="DAX" width="35" height="35"></div><span class="tool-name">DAX</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/Power-BI-Logo.png" alt="Power BI" width="35" height="35"></div><span class="tool-name">Power BI</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/SQL.png" alt="SQL" width="35" height="35"></div><span class="tool-name">SQL</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/Excel.png" alt="Excel" width="35" height="35"></div><span class="tool-name">Excel</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/Dax.png" alt="DAX" width="35" height="35"></div><span class="tool-name">DAX</span></div>
               <div class="tool-cell"><div class="tool-icon"><span style="color:#4A7FD4;">PQ</span></div><span class="tool-name">Power Query</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="Python.png" alt="Python" width="35" height="35"></div><span class="tool-name">Python</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/Python.png" alt="Python" width="35" height="35"></div><span class="tool-name">Python</span></div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="tools-grid">
-              <div class="tool-cell"><div class="tool-icon"><img src="HTML.png" alt="HTML" width="35" height="35"></div><span class="tool-name">HTML</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="PHP.png" alt="PHP" width="35" height="35"></div><span class="tool-name">PHP</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="github.png" alt="GitHub" width="35" height="35"></div><span class="tool-name">GitHub</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="WD.png" alt="Workday" width="35" height="35"></div><span class="tool-name">Workday</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="SAP.png" alt="SAP" width="35" height="35"></div><span class="tool-name">SAP</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="Jira.png" alt="JIRA" width="35" height="35"></div><span class="tool-name">JIRA</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/HTML.png" alt="HTML" width="35" height="35"></div><span class="tool-name">HTML</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/PHP.png" alt="PHP" width="35" height="35"></div><span class="tool-name">PHP</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/github.png" alt="GitHub" width="35" height="35"></div><span class="tool-name">GitHub</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/WD.png" alt="Workday" width="35" height="35"></div><span class="tool-name">Workday</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/SAP.png" alt="SAP" width="35" height="35"></div><span class="tool-name">SAP</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/Jira.png" alt="JIRA" width="35" height="35"></div><span class="tool-name">JIRA</span></div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="tools-grid">
-              <div class="tool-cell"><div class="tool-icon"><img src="365.png" alt="MS365" width="35" height="35"></div><span class="tool-name">MS365</span></div>
-              <div class="tool-cell"><div class="tool-icon"><img src="Slack.png" alt="Slack" width="35" height="35"></div><span class="tool-name">Slack</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/365.png" alt="MS365" width="35" height="35"></div><span class="tool-name">MS365</span></div>
+              <div class="tool-cell"><div class="tool-icon"><img src="images/Slack.png" alt="Slack" width="35" height="35"></div><span class="tool-name">Slack</span></div>
               <div class="tool-cell"><div class="tool-icon"><span style="color:#0059DC;">PA</span></div><span class="tool-name">Power Automate</span></div>
               <div class="tool-cell"><div class="tool-icon"><span style="color:#800080;">AI</span></div><span class="tool-name">AI Tools</span></div>
             </div>
           </div>
-
         </div>
       </div>
       <div class="carousel-controls">
@@ -1268,180 +619,175 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
     <div class="carousel" id="projectsCarousel">
       <div class="carousel-viewport">
         <div class="carousel-track" id="projectsTrack">
-
           <div class="carousel-slide">
             <div class="projects-grid">
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-preview preview-feast">
-          <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
-            <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(201,168,76,0.4)" letter-spacing="2">FEAST &amp; FORTUNE DASHBOARD</text>
-            <rect x="12" y="32" width="82" height="40" rx="2" fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
-            <text x="20" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(201,168,76,0.4)">REVENUE</text>
-            <text x="20" y="62" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(201,168,76,0.7)">₱4.2M</text>
-            <rect x="102" y="32" width="82" height="40" rx="2" fill="rgba(74,127,212,0.04)" stroke="rgba(74,127,212,0.1)" stroke-width="0.5"/>
-            <text x="110" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(74,127,212,0.4)">ATTENDANCE</text>
-            <text x="110" y="62" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(74,127,212,0.7)">2,847</text>
-            <rect x="192" y="32" width="82" height="40" rx="2" fill="rgba(80,220,120,0.04)" stroke="rgba(80,220,120,0.1)" stroke-width="0.5"/>
-            <text x="200" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(80,220,120,0.4)">ROI</text>
-            <text x="200" y="62" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(80,220,120,0.7)">+124%</text>
-            <rect x="282" y="32" width="82" height="40" rx="2" fill="rgba(220,80,80,0.04)" stroke="rgba(220,80,80,0.1)" stroke-width="0.5"/>
-            <text x="290" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(220,80,80,0.4)">ENGAGEMENT</text>
-            <text x="290" y="62" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(220,80,80,0.7)">87%</text>
-            <rect x="20" y="112" width="28" height="28" rx="1" fill="rgba(201,168,76,0.2)"/>
-            <rect x="55" y="98"  width="28" height="42" rx="1" fill="rgba(201,168,76,0.35)"/>
-            <rect x="90" y="88"  width="28" height="52" rx="1" fill="rgba(201,168,76,0.5)"/>
-            <rect x="125" y="104" width="28" height="36" rx="1" fill="rgba(201,168,76,0.3)"/>
-            <rect x="160" y="94"  width="28" height="46" rx="1" fill="rgba(201,168,76,0.45)"/>
-            <rect x="195" y="86"  width="28" height="54" rx="1" fill="rgba(201,168,76,0.6)"/>
-            <rect x="230" y="100" width="28" height="40" rx="1" fill="rgba(201,168,76,0.35)"/>
-            <rect x="265" y="82"  width="28" height="58" rx="1" fill="rgba(201,168,76,0.7)"/>
-            <rect x="300" y="90"  width="28" height="50" rx="1" fill="rgba(201,168,76,0.55)"/>
-            <rect x="335" y="84"  width="28" height="56" rx="1" fill="rgba(201,168,76,0.65)"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-tags"><span class="tag">Executive Dashboard</span><span class="tag">Event Analytics</span></div>
-          <h3 class="project-title">Feast & Fortune Dashboard</h3>
-          <p class="project-challenge">Leadership needed real-time visibility into campaign performance, attendance trends, and event ROI — consolidated from multiple data sources into a single executive view.</p>
-          <div class="project-insights">
-            <div class="insights-label">Key Outcomes</div>
-            <ul class="insights-list">
-              <li>Surfaced 3 underperforming events, triggering strategy revision</li>
-              <li>Reduced reporting time from 4 hours to 20 minutes weekly</li>
-              <li>Enabled real-time campaign pivoting during live events</li>
-            </ul>
-          </div>
-        </div>
-        <div class="project-footer">
-          <div class="tech-pills"><span class="tech-pill">Power BI</span><span class="tech-pill">SQL</span><span class="tech-pill">DAX</span></div>
-          <a href="#" class="project-cta">View Case →</a>
-        </div>
-      </div>
+              <div class="project-card reveal reveal-delay-1">
+                <div class="project-preview preview-feast">
+                  <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+                    <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(201,168,76,0.4)" letter-spacing="2">FEAST &amp; FORTUNE DASHBOARD</text>
+                    <rect x="12" y="32" width="82" height="40" rx="2" fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+                    <text x="20" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(201,168,76,0.4)">REVENUE</text>
+                    <text x="20" y="62" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(201,168,76,0.7)">₱4.2M</text>
+                    <rect x="102" y="32" width="82" height="40" rx="2" fill="rgba(74,127,212,0.04)" stroke="rgba(74,127,212,0.1)" stroke-width="0.5"/>
+                    <text x="110" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(74,127,212,0.4)">ATTENDANCE</text>
+                    <text x="110" y="62" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(74,127,212,0.7)">2,847</text>
+                    <rect x="192" y="32" width="82" height="40" rx="2" fill="rgba(80,220,120,0.04)" stroke="rgba(80,220,120,0.1)" stroke-width="0.5"/>
+                    <text x="200" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(80,220,120,0.4)">ROI</text>
+                    <text x="200" y="62" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(80,220,120,0.7)">+124%</text>
+                    <rect x="282" y="32" width="82" height="40" rx="2" fill="rgba(220,80,80,0.04)" stroke="rgba(220,80,80,0.1)" stroke-width="0.5"/>
+                    <text x="290" y="47" font-family="JetBrains Mono" font-size="5" fill="rgba(220,80,80,0.4)">ENGAGEMENT</text>
+                    <text x="290" y="62" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(220,80,80,0.7)">87%</text>
+                    <rect x="20" y="112" width="28" height="28" rx="1" fill="rgba(201,168,76,0.2)"/>
+                    <rect x="55" y="98" width="28" height="42" rx="1" fill="rgba(201,168,76,0.35)"/>
+                    <rect x="90" y="88" width="28" height="52" rx="1" fill="rgba(201,168,76,0.5)"/>
+                    <rect x="125" y="104" width="28" height="36" rx="1" fill="rgba(201,168,76,0.3)"/>
+                    <rect x="160" y="94" width="28" height="46" rx="1" fill="rgba(201,168,76,0.45)"/>
+                    <rect x="195" y="86" width="28" height="54" rx="1" fill="rgba(201,168,76,0.6)"/>
+                    <rect x="230" y="100" width="28" height="40" rx="1" fill="rgba(201,168,76,0.35)"/>
+                    <rect x="265" y="82" width="28" height="58" rx="1" fill="rgba(201,168,76,0.7)"/>
+                    <rect x="300" y="90" width="28" height="50" rx="1" fill="rgba(201,168,76,0.55)"/>
+                    <rect x="335" y="84" width="28" height="56" rx="1" fill="rgba(201,168,76,0.65)"/>
+                  </svg>
+                </div>
+                <div class="project-content">
+                  <div class="project-tags"><span class="tag">Executive Dashboard</span><span class="tag">Event Analytics</span></div>
+                  <h3 class="project-title">Feast & Fortune Dashboard</h3>
+                  <p class="project-challenge">Leadership needed real-time visibility into campaign performance, attendance trends, and event ROI — consolidated from multiple data sources into a single executive view.</p>
+                  <div class="project-insights">
+                    <div class="insights-label">Key Outcomes</div>
+                    <ul class="insights-list">
+                      <li>Surfaced 3 underperforming events, triggering strategy revision</li>
+                      <li>Reduced reporting time from 4 hours to 20 minutes weekly</li>
+                      <li>Enabled real-time campaign pivoting during live events</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="project-footer">
+                  <div class="tech-pills"><span class="tech-pill">Power BI</span><span class="tech-pill">SQL</span><span class="tech-pill">DAX</span></div>
+                  <a href="#" class="project-cta">View Case →</a>
+                </div>
+              </div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="projects-grid">
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-preview preview-promo">
-          <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
-            <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(80,200,120,0.4)" letter-spacing="2">PROMOTION ROI ANALYSIS</text>
-            <polyline points="20,130 60,110 100,120 140,85 180,90 220,70 260,75 300,55 340,60" fill="none" stroke="rgba(80,200,120,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="20,130 60,125 100,122 140,118 180,114 220,110 260,108 300,105 340,100" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
-            <text x="20"  y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">JAN</text>
-            <text x="180" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">MAY</text>
-            <text x="340" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">SEP</text>
-            <rect x="20" y="28" width="130" height="28" rx="2" fill="rgba(80,200,120,0.05)" stroke="rgba(80,200,120,0.12)" stroke-width="0.5"/>
-            <text x="28" y="40" font-family="JetBrains Mono" font-size="5.5" fill="rgba(80,200,120,0.4)">CAMPAIGNS ANALYZED</text>
-            <text x="28" y="52" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(80,200,120,0.7)">48 Promotions</text>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-tags"><span class="tag">Financial Analytics</span><span class="tag">Pacing Reports</span></div>
-          <h3 class="project-title">Promotion ROI & Pacing Analysis</h3>
-          <p class="project-challenge">Marketing needed rigorous financial tracking for promotions — comparing projected vs. actual performance with clear postmortem analysis to improve future planning.</p>
-          <div class="project-insights">
-            <div class="insights-label">Key Outcomes</div>
-            <ul class="insights-list">
-              <li>Identified ₱800K in recoverable budget leakage</li>
-              <li>Built automated pro forma models for 12+ event types</li>
-              <li>Enabled data-driven budget reallocation mid-campaign</li>
-            </ul>
-          </div>
-        </div>
-        <div class="project-footer">
-          <div class="tech-pills"><span class="tech-pill">SQL</span><span class="tech-pill">Excel</span><span class="tech-pill">Power BI</span></div>
-          <a href="#" class="project-cta">View Case →</a>
-        </div>
-      </div>
+              <div class="project-card reveal reveal-delay-1">
+                <div class="project-preview preview-promo">
+                  <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+                    <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(80,200,120,0.4)" letter-spacing="2">PROMOTION ROI ANALYSIS</text>
+                    <polyline points="20,130 60,110 100,120 140,85 180,90 220,70 260,75 300,55 340,60" fill="none" stroke="rgba(80,200,120,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="20,130 60,125 100,122 140,118 180,114 220,110 260,108 300,105 340,100" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+                    <text x="20" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">JAN</text>
+                    <text x="180" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">MAY</text>
+                    <text x="340" y="148" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)">SEP</text>
+                    <rect x="20" y="28" width="130" height="28" rx="2" fill="rgba(80,200,120,0.05)" stroke="rgba(80,200,120,0.12)" stroke-width="0.5"/>
+                    <text x="28" y="40" font-family="JetBrains Mono" font-size="5.5" fill="rgba(80,200,120,0.4)">CAMPAIGNS ANALYZED</text>
+                    <text x="28" y="52" font-family="Cormorant Garant,serif" font-size="14" fill="rgba(80,200,120,0.7)">48 Promotions</text>
+                  </svg>
+                </div>
+                <div class="project-content">
+                  <div class="project-tags"><span class="tag">Financial Analytics</span><span class="tag">Pacing Reports</span></div>
+                  <h3 class="project-title">Promotion ROI & Pacing Analysis</h3>
+                  <p class="project-challenge">Marketing needed rigorous financial tracking for promotions — comparing projected vs. actual performance with clear postmortem analysis to improve future planning.</p>
+                  <div class="project-insights">
+                    <div class="insights-label">Key Outcomes</div>
+                    <ul class="insights-list">
+                      <li>Identified ₱800K in recoverable budget leakage</li>
+                      <li>Built automated pro forma models for 12+ event types</li>
+                      <li>Enabled data-driven budget reallocation mid-campaign</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="project-footer">
+                  <div class="tech-pills"><span class="tech-pill">SQL</span><span class="tech-pill">Excel</span><span class="tech-pill">Power BI</span></div>
+                  <a href="#" class="project-cta">View Case →</a>
+                </div>
+              </div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="projects-grid">
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-preview preview-player">
-          <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
-            <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(180,80,220,0.4)" letter-spacing="2">PLAYER SEGMENTATION</text>
-            <circle cx="80"  cy="85"  r="35" fill="rgba(180,80,220,0.06)"  stroke="rgba(180,80,220,0.15)"  stroke-width="0.8"/>
-            <text x="80"  y="82" font-family="Cormorant Garant,serif" font-size="9" fill="rgba(180,80,220,0.6)" text-anchor="middle">Premium</text>
-            <text x="80"  y="94" font-family="JetBrains Mono" font-size="6" fill="rgba(180,80,220,0.4)" text-anchor="middle">14%</text>
-            <circle cx="185" cy="90"  r="28" fill="rgba(74,127,212,0.06)"   stroke="rgba(74,127,212,0.15)"   stroke-width="0.8"/>
-            <text x="185" y="87" font-family="Cormorant Garant,serif" font-size="9" fill="rgba(74,127,212,0.6)" text-anchor="middle">Active</text>
-            <text x="185" y="99" font-family="JetBrains Mono" font-size="6" fill="rgba(74,127,212,0.4)" text-anchor="middle">31%</text>
-            <circle cx="280" cy="95"  r="22" fill="rgba(80,200,120,0.06)"   stroke="rgba(80,200,120,0.15)"   stroke-width="0.8"/>
-            <text x="280" y="92" font-family="Cormorant Garant,serif" font-size="8" fill="rgba(80,200,120,0.6)" text-anchor="middle">Casual</text>
-            <text x="280" y="103" font-family="JetBrains Mono" font-size="5" fill="rgba(80,200,120,0.4)" text-anchor="middle">55%</text>
-            <circle cx="340" cy="110" r="15" fill="rgba(220,80,80,0.06)"    stroke="rgba(220,80,80,0.15)"    stroke-width="0.8"/>
-            <text x="340" y="107" font-family="Cormorant Garant,serif" font-size="7" fill="rgba(220,80,80,0.5)" text-anchor="middle">Churn</text>
-            <text x="340" y="116" font-family="JetBrains Mono" font-size="5" fill="rgba(220,80,80,0.4)" text-anchor="middle">Risk</text>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-tags"><span class="tag">Behavioral Analysis</span><span class="tag">Segmentation</span></div>
-          <h3 class="project-title">Player Segmentation Dashboard</h3>
-          <p class="project-challenge">Marketing teams lacked a systematic way to identify and prioritize high-value member segments, resulting in blanket campaign strategies with low conversion efficiency.</p>
-          <div class="project-insights">
-            <div class="insights-label">Key Outcomes</div>
-            <ul class="insights-list">
-              <li>Identified top 14% of members driving 61% of revenue</li>
-              <li>Enabled personalized retention campaigns for at-risk segments</li>
-              <li>Supported 3 targeted promotions with measurable lift</li>
-            </ul>
-          </div>
-        </div>
-        <div class="project-footer">
-          <div class="tech-pills"><span class="tech-pill">SQL</span><span class="tech-pill">Power BI</span><span class="tech-pill">Python</span></div>
-          <a href="#" class="project-cta">View Case →</a>
-        </div>
-      </div>
+              <div class="project-card reveal reveal-delay-1">
+                <div class="project-preview preview-player">
+                  <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+                    <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(180,80,220,0.4)" letter-spacing="2">PLAYER SEGMENTATION</text>
+                    <circle cx="80" cy="85" r="35" fill="rgba(180,80,220,0.06)" stroke="rgba(180,80,220,0.15)" stroke-width="0.8"/>
+                    <text x="80" y="82" font-family="Cormorant Garant,serif" font-size="9" fill="rgba(180,80,220,0.6)" text-anchor="middle">Premium</text>
+                    <text x="80" y="94" font-family="JetBrains Mono" font-size="6" fill="rgba(180,80,220,0.4)" text-anchor="middle">14%</text>
+                    <circle cx="185" cy="90" r="28" fill="rgba(74,127,212,0.06)" stroke="rgba(74,127,212,0.15)" stroke-width="0.8"/>
+                    <text x="185" y="87" font-family="Cormorant Garant,serif" font-size="9" fill="rgba(74,127,212,0.6)" text-anchor="middle">Active</text>
+                    <text x="185" y="99" font-family="JetBrains Mono" font-size="6" fill="rgba(74,127,212,0.4)" text-anchor="middle">31%</text>
+                    <circle cx="280" cy="95" r="22" fill="rgba(80,200,120,0.06)" stroke="rgba(80,200,120,0.15)" stroke-width="0.8"/>
+                    <text x="280" y="92" font-family="Cormorant Garant,serif" font-size="8" fill="rgba(80,200,120,0.6)" text-anchor="middle">Casual</text>
+                    <text x="280" y="103" font-family="JetBrains Mono" font-size="5" fill="rgba(80,200,120,0.4)" text-anchor="middle">55%</text>
+                    <circle cx="340" cy="110" r="15" fill="rgba(220,80,80,0.06)" stroke="rgba(220,80,80,0.15)" stroke-width="0.8"/>
+                    <text x="340" y="107" font-family="Cormorant Garant,serif" font-size="7" fill="rgba(220,80,80,0.5)" text-anchor="middle">Churn</text>
+                    <text x="340" y="116" font-family="JetBrains Mono" font-size="5" fill="rgba(220,80,80,0.4)" text-anchor="middle">Risk</text>
+                  </svg>
+                </div>
+                <div class="project-content">
+                  <div class="project-tags"><span class="tag">Behavioral Analysis</span><span class="tag">Segmentation</span></div>
+                  <h3 class="project-title">Player Segmentation Dashboard</h3>
+                  <p class="project-challenge">Marketing teams lacked a systematic way to identify and prioritize high-value member segments, resulting in blanket campaign strategies with low conversion efficiency.</p>
+                  <div class="project-insights">
+                    <div class="insights-label">Key Outcomes</div>
+                    <ul class="insights-list">
+                      <li>Identified top 14% of members driving 61% of revenue</li>
+                      <li>Enabled personalized retention campaigns for at-risk segments</li>
+                      <li>Supported 3 targeted promotions with measurable lift</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="project-footer">
+                  <div class="tech-pills"><span class="tech-pill">SQL</span><span class="tech-pill">Power BI</span><span class="tech-pill">Python</span></div>
+                  <a href="#" class="project-cta">View Case →</a>
+                </div>
+              </div>
             </div>
           </div>
-
           <div class="carousel-slide">
             <div class="projects-grid">
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-preview preview-marketing">
-          <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
-            <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(220,160,80,0.4)" letter-spacing="2">MARKETING PERFORMANCE</text>
-            <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="22"/>
-            <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(201,168,76,0.5)"  stroke-width="22" stroke-dasharray="160 92"  stroke-dashoffset="40"/>
-            <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(74,127,212,0.4)"  stroke-width="22" stroke-dasharray="60 192"  stroke-dashoffset="-120"/>
-            <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(80,200,120,0.3)"  stroke-width="22" stroke-dasharray="32 220"  stroke-dashoffset="-180"/>
-            <text x="85" y="87" font-family="Cormorant Garant,serif" font-size="13" fill="rgba(201,168,76,0.7)" text-anchor="middle">KPI</text>
-            <text x="85" y="99" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)" text-anchor="middle">HEALTH</text>
-            <rect x="150" y="40" width="8" height="8" rx="1" fill="rgba(201,168,76,0.5)"/>
-            <text x="164" y="48" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Email 64%</text>
-            <rect x="150" y="58" width="8" height="8" rx="1" fill="rgba(74,127,212,0.4)"/>
-            <text x="164" y="66" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Social 24%</text>
-            <rect x="150" y="76" width="8" height="8" rx="1" fill="rgba(80,200,120,0.3)"/>
-            <text x="164" y="84" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Events 12%</text>
-            <rect x="250" y="30" width="110" height="100" rx="2" fill="rgba(201,168,76,0.03)" stroke="rgba(201,168,76,0.08)" stroke-width="0.5"/>
-            <text x="305" y="67" font-family="Cormorant Garant,serif" font-size="18" fill="rgba(201,168,76,0.65)" text-anchor="middle">24</text>
-            <text x="305" y="110" font-family="Cormorant Garant,serif" font-size="18" fill="rgba(168,168,184,0.5)" text-anchor="middle">47</text>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-tags"><span class="tag">Campaign Monitoring</span><span class="tag">Strategic KPIs</span></div>
-          <h3 class="project-title">Marketing Performance Dashboard</h3>
-          <p class="project-challenge">Department heads needed a consolidated, real-time view of campaign performance across multiple channels — replacing a weekly manual Excel process with dynamic BI reporting.</p>
-          <div class="project-insights">
-            <div class="insights-label">Key Outcomes</div>
-            <ul class="insights-list">
-              <li>Consolidated 7 reporting sources into 1 live dashboard</li>
-              <li>Reduced monthly reporting cycle from 3 days to 4 hours</li>
-              <li>Tracked 47 KPIs across 24 simultaneous campaigns</li>
-            </ul>
-          </div>
-        </div>
-        <div class="project-footer">
-          <div class="tech-pills"><span class="tech-pill">Power BI</span><span class="tech-pill">DAX</span><span class="tech-pill">SQL</span></div>
-          <a href="#" class="project-cta">View Case →</a>
-        </div>
-      </div>
+              <div class="project-card reveal reveal-delay-1">
+                <div class="project-preview preview-marketing">
+                  <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+                    <text x="12" y="22" font-family="JetBrains Mono" font-size="7" fill="rgba(220,160,80,0.4)" letter-spacing="2">MARKETING PERFORMANCE</text>
+                    <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="22"/>
+                    <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="22" stroke-dasharray="160 92" stroke-dashoffset="40"/>
+                    <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(74,127,212,0.4)" stroke-width="22" stroke-dasharray="60 192" stroke-dashoffset="-120"/>
+                    <circle cx="85" cy="90" r="40" fill="none" stroke="rgba(80,200,120,0.3)" stroke-width="22" stroke-dasharray="32 220" stroke-dashoffset="-180"/>
+                    <text x="85" y="87" font-family="Cormorant Garant,serif" font-size="13" fill="rgba(201,168,76,0.7)" text-anchor="middle">KPI</text>
+                    <text x="85" y="99" font-family="JetBrains Mono" font-size="6" fill="rgba(168,168,184,0.3)" text-anchor="middle">HEALTH</text>
+                    <rect x="150" y="40" width="8" height="8" rx="1" fill="rgba(201,168,76,0.5)"/>
+                    <text x="164" y="48" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Email 64%</text>
+                    <rect x="150" y="58" width="8" height="8" rx="1" fill="rgba(74,127,212,0.4)"/>
+                    <text x="164" y="66" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Social 24%</text>
+                    <rect x="150" y="76" width="8" height="8" rx="1" fill="rgba(80,200,120,0.3)"/>
+                    <text x="164" y="84" font-family="JetBrains Mono" font-size="6.5" fill="rgba(168,168,184,0.5)">Events 12%</text>
+                    <rect x="250" y="30" width="110" height="100" rx="2" fill="rgba(201,168,76,0.03)" stroke="rgba(201,168,76,0.08)" stroke-width="0.5"/>
+                    <text x="305" y="67" font-family="Cormorant Garant,serif" font-size="18" fill="rgba(201,168,76,0.65)" text-anchor="middle">24</text>
+                    <text x="305" y="110" font-family="Cormorant Garant,serif" font-size="18" fill="rgba(168,168,184,0.5)" text-anchor="middle">47</text>
+                  </svg>
+                </div>
+                <div class="project-content">
+                  <div class="project-tags"><span class="tag">Campaign Monitoring</span><span class="tag">Strategic KPIs</span></div>
+                  <h3 class="project-title">Marketing Performance Dashboard</h3>
+                  <p class="project-challenge">Department heads needed a consolidated, real-time view of campaign performance across multiple channels — replacing a weekly manual Excel process with dynamic BI reporting.</p>
+                  <div class="project-insights">
+                    <div class="insights-label">Key Outcomes</div>
+                    <ul class="insights-list">
+                      <li>Consolidated 7 reporting sources into 1 live dashboard</li>
+                      <li>Reduced monthly reporting cycle from 3 days to 4 hours</li>
+                      <li>Tracked 47 KPIs across 24 simultaneous campaigns</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="project-footer">
+                  <div class="tech-pills"><span class="tech-pill">Power BI</span><span class="tech-pill">DAX</span><span class="tech-pill">SQL</span></div>
+                  <a href="#" class="project-cta">View Case →</a>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
       <div class="carousel-controls">
@@ -1511,207 +857,4 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border-silver); background
 <section class="contact" id="contact">
   <div class="container contact-inner">
     <div class="reveal">
-      <div class="eyebrow" style="display:flex;justify-content:center;">Get In Touch</div>
-      <h2 class="display display-md contact-headline">Let's Turn Data<br>Into <em style="color:var(--gold);font-style:italic;">Decisions</em></h2>
-      <p class="contact-sub">Whether you're looking to build your first BI system, modernize existing reporting, or gain strategic clarity from your data — I'd love to hear about your challenge.</p>
-    </div>
-    <div class="contact-ctas reveal reveal-delay-1">
-      <a href="mailto:jh0ntrinidad24@gmail.com" class="btn-primary">Send a Message →</a>
-      <a href="https://linkedin.com/in/jotrinidad" target="_blank" rel="noopener" class="btn-outline">View LinkedIn</a>
-    </div>
-    <div class="social-row reveal reveal-delay-2">
-      <a href="https://linkedin.com/in/jotrinidad" target="_blank" rel="noopener" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://github.com" target="_blank" rel="noopener" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="mailto:jh0ntrinidad24@gmail.com" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email
-      </a>
-      <a href="tel:+639488210586" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +63 948 821 0586
-      </a>
-      <a href="https://wa.me/639488210586?text=Hi%20Jhon%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.12h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.35c0-4.53 3.69-8.21 8.22-8.21 2.2 0 4.26.86 5.81 2.41a8.15 8.15 0 0 1 2.41 5.81c0 4.53-3.69 8.21-8.22 8.21zm4.51-6.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.24-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42-.14 0-.31-.02-.47-.02s-.43.06-.66.31c-.23.24-.86.85-.86 2.06 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.14-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
-        WhatsApp
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container footer-inner">
-    <span class="footer-copy">© 2025 Jhon Joseph Y. Trinidad. Pampanga, Philippines.</span>
-    <span class="footer-brand">JJ · Trinidad</span>
-  </div>
-</footer>
-
-<script>
-// Nav scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
-
-// Mobile menu
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileClose = document.getElementById('mobileClose');
-
-function openMenu() {
-  mobileMenu.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeMenu() {
-  mobileMenu.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-hamburger.addEventListener('click', openMenu);
-hamburger.addEventListener('touchend', function(e){ e.preventDefault(); openMenu(); });
-mobileClose.addEventListener('click', closeMenu);
-mobileClose.addEventListener('touchend', function(e){ e.preventDefault(); closeMenu(); });
-document.querySelectorAll('.mobile-link').forEach(function(link){
-  link.addEventListener('click', closeMenu);
-});
-
-// Nav logo → scroll to top
-document.querySelector('.nav-logo').addEventListener('click', function(e){
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Reveal on scroll
-const reveals = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver(function(entries){
-  entries.forEach(function(entry){
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-reveals.forEach(function(el){ revealObserver.observe(el); });
-
-// Counters
-const counters = document.querySelectorAll('[data-target]');
-const counterObserver = new IntersectionObserver(function(entries){
-  entries.forEach(function(entry){
-    if(!entry.isIntersecting) return;
-    var el = entry.target;
-    var target = parseInt(el.dataset.target);
-    var step = target / (1600 / 16);
-    var current = 0;
-    var timer = setInterval(function(){
-      current = Math.min(current + step, target);
-      el.textContent = Math.floor(current) + '+';
-      if(current >= target){ el.textContent = target + '+'; clearInterval(timer); }
-    }, 16);
-    counterObserver.unobserve(el);
-  });
-}, { threshold: 0.5 });
-counters.forEach(function(el){ counterObserver.observe(el); });
-
-// Generic carousel controller
-function initCarousel(config) {
-  var track = document.getElementById(config.track);
-  var viewport = track ? track.closest('.carousel-viewport') : null;
-  var prevBtn = document.getElementById(config.prev);
-  var nextBtn = document.getElementById(config.next);
-  var dotsWrap = document.getElementById(config.dots);
-  if (!track || !prevBtn || !nextBtn || !dotsWrap || !viewport) return;
-
-  var slides = Array.prototype.slice.call(track.children);
-  var index = 0;
-  var isDesktop = window.matchMedia('(min-width: 769px)').matches;
-
-  slides.forEach(function(_, i) {
-    var dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'carousel-dot';
-    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    dot.addEventListener('click', function () { goTo(i); });
-    dotsWrap.appendChild(dot);
-  });
-  var dots = Array.prototype.slice.call(dotsWrap.children);
-
-  function setHeight() {
-    if (isDesktop) { viewport.style.height = ''; return; }
-    var active = slides[index];
-    if (active) viewport.style.height = active.offsetHeight + 'px';
-  }
-
-  function update() {
-    if (isDesktop) {
-      track.style.transform = '';
-      return;
-    }
-    track.style.transform = 'translateX(-' + (index * 100) + '%)';
-    dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === slides.length - 1;
-    setHeight();
-  }
-
-  function goTo(i) {
-    index = Math.max(0, Math.min(slides.length - 1, i));
-    update();
-  }
-
-  prevBtn.addEventListener('click', function () { goTo(index - 1); });
-  nextBtn.addEventListener('click', function () { goTo(index + 1); });
-  window.addEventListener('resize', function () {
-    isDesktop = window.matchMedia('(min-width: 769px)').matches;
-    update();
-    setHeight();
-  });
-
-  // Touch swipe support (mobile only — harmless on desktop since carousel is disabled there)
-  var startX = 0, deltaX = 0, dragging = false;
-  track.addEventListener('touchstart', function (e) {
-    if (isDesktop) return;
-    startX = e.touches[0].clientX;
-    dragging = true;
-  }, { passive: true });
-  track.addEventListener('touchmove', function (e) {
-    if (!dragging) return;
-    deltaX = e.touches[0].clientX - startX;
-  }, { passive: true });
-  track.addEventListener('touchend', function () {
-    if (!dragging) return;
-    if (deltaX > 40) goTo(index - 1);
-    else if (deltaX < -40) goTo(index + 1);
-    dragging = false;
-    deltaX = 0;
-  });
-
-  update();
-  // Recalculate once images/fonts finish loading (their size affects card height)
-  window.addEventListener('load', setHeight);
-}
-
-initCarousel({ track: 'servicesTrack', prev: 'servicesPrev', next: 'servicesNext', dots: 'servicesDots' });
-initCarousel({ track: 'toolsTrack', prev: 'toolsPrev', next: 'toolsNext', dots: 'toolsDots' });
-initCarousel({ track: 'projectsTrack', prev: 'projectsPrev', next: 'projectsNext', dots: 'projectsDots' });
-
-// Smooth scroll anchors
-document.querySelectorAll('a[href^="#"]').forEach(function(a){
-  a.addEventListener('click', function(e){
-    var href = a.getAttribute('href');
-    if(href === '#') return;
-    var target = document.querySelector(href);
-    if(target){
-      e.preventDefault();
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-    }
-  });
-});
-</script>
-</body>
-</html>
+      <div class="eyebrow" style="display:flex;justify-content:
